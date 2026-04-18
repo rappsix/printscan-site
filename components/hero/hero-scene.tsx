@@ -16,7 +16,7 @@ function RotatingCore() {
 
   return (
     <Float speed={1.2} rotationIntensity={0.4} floatIntensity={0.6}>
-      <mesh ref={meshRef} scale={1.6}>
+      <mesh ref={meshRef} scale={1.05}>
         <torusKnotGeometry args={[1, 0.32, 220, 32]} />
         <MeshDistortMaterial
           color="#ff5a1f"
@@ -33,7 +33,7 @@ function RotatingCore() {
 function AmbientParticles() {
   const positions = Array.from({ length: 18 }, (_, index) => {
     const angle = (index / 18) * Math.PI * 2;
-    return [Math.cos(angle) * 3.4, Math.sin(angle * 1.3) * 1.8, Math.sin(angle) * 3.4] as const;
+    return [Math.cos(angle) * 2.2, Math.sin(angle * 1.3) * 1.2, Math.sin(angle) * 2.2] as const;
   });
 
   return (
@@ -58,7 +58,7 @@ function AmbientParticles() {
 export function HeroScene() {
   return (
     <Canvas
-      camera={{ position: [0, 0, 5], fov: 45 }}
+      camera={{ position: [0, 0, 7], fov: 42 }}
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true }}
     >
