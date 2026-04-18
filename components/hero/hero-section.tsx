@@ -1,8 +1,19 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { BrandButton } from "@/components/ui/brand-button";
 import { SiteContainer } from "@/components/ui/site-container";
 import { companyInfo } from "@/content/company-info";
-import { HeroVisual } from "./hero-visual";
+import { HeroSceneBoundary } from "./hero-scene-boundary";
+
+const HeroScene = dynamic(
+  () => import("./hero-scene").then((m) => m.HeroScene),
+  {
+    ssr: false,
+    loading: () => <div className="h-full w-full animate-pulse rounded-[32px] bg-surface-raised" />,
+  },
+);
 
 export function HeroSection() {
   return (
@@ -52,7 +63,9 @@ export function HeroSection() {
         </div>
 
         <div className="relative aspect-square w-full max-w-[560px] justify-self-center overflow-hidden rounded-[32px]">
-          <HeroVisual />
+          <HeroSceneBoundary fallback={<div className="h-full w-full rounded-[32px] bg-surface-raised" />}>
+            <HeroScene />
+          </HeroSceneBoundary>
         </div>
       </SiteContainer>
     </section>
