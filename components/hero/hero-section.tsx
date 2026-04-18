@@ -61,7 +61,7 @@ export function HeroSection() {
           </dl>
         </div>
 
-        <div className="relative aspect-square w-full max-w-[560px] justify-self-center overflow-hidden rounded-[32px] border border-border-bright bg-surface-raised/50">
+        <div className="relative aspect-square w-full max-w-[560px] justify-self-center overflow-hidden rounded-[32px]">
           <HeroScene />
         </div>
       </SiteContainer>
