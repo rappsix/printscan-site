@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { companyInfo } from "@/content/company-info";
@@ -18,9 +19,13 @@ export function SiteHeader() {
           href="/"
           className="flex items-center gap-2 text-lg font-semibold tracking-tight"
         >
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand text-white">
-            S&amp;P
-          </span>
+          <Image
+            src="/logo.jpg"
+            alt={companyInfo.name}
+            width={36}
+            height={36}
+            className="rounded-lg"
+          />
           <span className="hidden sm:inline">{companyInfo.name}</span>
         </Link>
 

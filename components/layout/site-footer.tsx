@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 import { companyInfo } from "@/content/company-info";
 import { servicesCatalog } from "@/content/services-catalog";
@@ -11,9 +12,13 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-4">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 text-foreground">
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand text-white">
-                S&amp;P
-              </span>
+              <Image
+                src="/logo.jpg"
+                alt={companyInfo.name}
+                width={36}
+                height={36}
+                className="rounded-lg"
+              />
               <span className="text-lg font-semibold">{companyInfo.name}</span>
             </Link>
             <p className="text-sm leading-relaxed">{companyInfo.tagline}</p>
