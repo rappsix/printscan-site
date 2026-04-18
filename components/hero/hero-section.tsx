@@ -6,6 +6,7 @@ import { BrandButton } from "@/components/ui/brand-button";
 import { SiteContainer } from "@/components/ui/site-container";
 import { companyInfo } from "@/content/company-info";
 import { HeroSceneBoundary } from "./hero-scene-boundary";
+import { HeroVisual } from "./hero-visual";
 
 const HeroScene = dynamic(
   () => import("./hero-scene").then((m) => m.HeroScene),
@@ -63,9 +64,16 @@ export function HeroSection() {
         </div>
 
         <div className="relative aspect-square w-full max-w-[560px] justify-self-center overflow-hidden rounded-[32px]">
-          <HeroSceneBoundary fallback={<div className="h-full w-full rounded-[32px] bg-surface-raised" />}>
-            <HeroScene />
-          </HeroSceneBoundary>
+          {/* Desktop: Three.js 3D scene */}
+          <div className="hidden h-full w-full lg:block">
+            <HeroSceneBoundary fallback={<HeroVisual />}>
+              <HeroScene />
+            </HeroSceneBoundary>
+          </div>
+          {/* Mobile: lightweight SVG animation */}
+          <div className="h-full w-full lg:hidden">
+            <HeroVisual />
+          </div>
         </div>
       </SiteContainer>
     </section>

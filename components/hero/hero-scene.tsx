@@ -20,8 +20,8 @@ function RotatingCore() {
         <torusKnotGeometry args={[1, 0.32, 128, 24]} />
         <MeshDistortMaterial
           color="#ff5a1f"
-          roughness={0.2}
-          metalness={0.65}
+          roughness={0.15}
+          metalness={0.55}
           distort={0.32}
           speed={1.4}
         />
@@ -29,7 +29,6 @@ function RotatingCore() {
     </Float>
   );
 }
-
 
 export function HeroScene() {
   return (
@@ -40,10 +39,10 @@ export function HeroScene() {
       performance={{ min: 0.5 }}
     >
       <AdaptiveDpr pixelated />
-      <ambientLight intensity={0.35} color="#ff8844" />
-      <directionalLight position={[5, 5, 5]} intensity={1.8} color="#ffffff" />
-      <pointLight position={[2, 3, 3]} intensity={1.2} color="#ff6622" />
-      <pointLight position={[-4, -2, 2]} intensity={0.5} color="#3fb0ff" />
+      <ambientLight intensity={0.4} color="#ffffff" />
+      <directionalLight position={[4, 5, 5]} intensity={2.2} color="#ffffff" />
+      <directionalLight position={[-3, -2, -2]} intensity={0.25} color="#ffffff" />
+      <pointLight position={[-4, -1, 3]} intensity={0.4} color="#3fb0ff" />
       <RotatingCore />
     </Canvas>
   );

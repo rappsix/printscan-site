@@ -6,9 +6,9 @@ export function HeroVisual() {
       <svg viewBox="0 0 400 400" className="h-[80%] w-[80%]" aria-hidden="true">
         <defs>
           <radialGradient id="hv-sphere" cx="38%" cy="32%">
-            <stop offset="0%" stopColor="#ff9966" />
+            <stop offset="0%" stopColor="#ff8844" />
             <stop offset="55%" stopColor="#ff5a1f" />
-            <stop offset="100%" stopColor="#c23c00" />
+            <stop offset="100%" stopColor="#cc3a00" />
           </radialGradient>
           <radialGradient id="hv-glow" cx="50%" cy="50%">
             <stop offset="0%" stopColor="rgba(255,90,31,0.28)" />
@@ -18,7 +18,6 @@ export function HeroVisual() {
 
         <circle cx="200" cy="200" r="72" fill="url(#hv-glow)" />
 
-        {/* Ring 1: orange, CW */}
         <g transform="translate(200,200)">
           <animateTransform attributeName="transform" additive="sum"
             type="rotate" values="0;360" dur="10s" repeatCount="indefinite" />
@@ -29,18 +28,16 @@ export function HeroVisual() {
           </g>
         </g>
 
-        {/* Ring 2: blue, CCW */}
         <g transform="translate(200,200)">
           <animateTransform attributeName="transform" additive="sum"
             type="rotate" values="0;-360" dur="14s" repeatCount="indefinite" />
           <g transform="rotate(-58)">
             <ellipse cx="0" cy="0" rx="135" ry="46" fill="none"
-              stroke="#3fb0ff" strokeWidth="1" strokeOpacity="0.65" />
-            <circle cx="135" cy="0" r="4" fill="#3fb0ff" opacity="0.9" />
+              stroke="#ff7033" strokeWidth="1" strokeOpacity="0.5" />
+            <circle cx="135" cy="0" r="4" fill="#ff5a1f" opacity="0.9" />
           </g>
         </g>
 
-        {/* Ring 3: faint outer, CW slow */}
         <g transform="translate(200,200)">
           <animateTransform attributeName="transform" additive="sum"
             type="rotate" values="0;360" dur="24s" repeatCount="indefinite" />
