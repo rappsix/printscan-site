@@ -1,42 +1,59 @@
 export function HeroVisual() {
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-[32px] bg-surface-raised">
+    <div className="relative flex h-full w-full items-center justify-center bg-surface-raised">
       <div className="pointer-events-none absolute inset-0 grid-bg opacity-20" />
 
-      <div
-        className="animate-blob-primary absolute"
-        style={{
-          top: "12%",
-          left: "10%",
-          width: "72%",
-          height: "72%",
-          background:
-            "radial-gradient(ellipse at 40% 40%, #ff7944 0%, #ff5a1f 30%, rgba(255,90,31,0.18) 65%, transparent 80%)",
-          filter: "blur(28px)",
-          opacity: 0.88,
-        }}
-      />
+      <svg viewBox="0 0 400 400" className="h-[80%] w-[80%]" aria-hidden="true">
+        <defs>
+          <radialGradient id="hv-sphere" cx="38%" cy="32%">
+            <stop offset="0%" stopColor="#ff9966" />
+            <stop offset="55%" stopColor="#ff5a1f" />
+            <stop offset="100%" stopColor="#c23c00" />
+          </radialGradient>
+          <radialGradient id="hv-glow" cx="50%" cy="50%">
+            <stop offset="0%" stopColor="rgba(255,90,31,0.28)" />
+            <stop offset="100%" stopColor="rgba(255,90,31,0)" />
+          </radialGradient>
+        </defs>
 
-      <div
-        className="animate-blob-secondary absolute"
-        style={{
-          top: "8%",
-          right: "6%",
-          width: "48%",
-          height: "48%",
-          background:
-            "radial-gradient(ellipse at 60% 35%, #3fb0ff 0%, rgba(63,176,255,0.35) 50%, transparent 75%)",
-          filter: "blur(22px)",
-          opacity: 0.7,
-        }}
-      />
+        <circle cx="200" cy="200" r="72" fill="url(#hv-glow)" />
 
-      <div
-        className="pointer-events-none absolute inset-0 rounded-[32px]"
-        style={{
-          boxShadow: "inset 0 0 90px 30px #14171e",
-        }}
-      />
+        {/* Ring 1: orange, CW */}
+        <g transform="translate(200,200)">
+          <animateTransform attributeName="transform" additive="sum"
+            type="rotate" values="0;360" dur="10s" repeatCount="indefinite" />
+          <g transform="rotate(12)">
+            <ellipse cx="0" cy="0" rx="135" ry="46" fill="none"
+              stroke="#ff5a1f" strokeWidth="1.5" strokeOpacity="0.8" />
+            <circle cx="135" cy="0" r="5" fill="#ff7944" opacity="0.95" />
+          </g>
+        </g>
+
+        {/* Ring 2: blue, CCW */}
+        <g transform="translate(200,200)">
+          <animateTransform attributeName="transform" additive="sum"
+            type="rotate" values="0;-360" dur="14s" repeatCount="indefinite" />
+          <g transform="rotate(-58)">
+            <ellipse cx="0" cy="0" rx="135" ry="46" fill="none"
+              stroke="#3fb0ff" strokeWidth="1" strokeOpacity="0.65" />
+            <circle cx="135" cy="0" r="4" fill="#3fb0ff" opacity="0.9" />
+          </g>
+        </g>
+
+        {/* Ring 3: faint outer, CW slow */}
+        <g transform="translate(200,200)">
+          <animateTransform attributeName="transform" additive="sum"
+            type="rotate" values="0;360" dur="24s" repeatCount="indefinite" />
+          <ellipse cx="0" cy="0" rx="158" ry="28" fill="none"
+            stroke="#ff7944" strokeWidth="0.75" strokeOpacity="0.3" />
+          <circle cx="158" cy="0" r="3" fill="#ff7944" opacity="0.65" />
+        </g>
+
+        <circle cx="200" cy="200" r="34" fill="url(#hv-sphere)" />
+      </svg>
+
+      <div className="pointer-events-none absolute inset-0"
+        style={{ boxShadow: "inset 0 0 80px 28px #14171e" }} />
     </div>
   );
 }

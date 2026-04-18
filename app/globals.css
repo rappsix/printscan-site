@@ -61,30 +61,3 @@ body {
 .animate-float-slow {
   animation: float-slow 6s ease-in-out infinite;
 }
-
-@keyframes blob-morph {
-  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  25%       { border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%; }
-  50%       { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-  75%       { border-radius: 40% 60% 50% 50% / 60% 30% 70% 40%; }
-}
-
-@keyframes blob-float {
-  0%, 100% { transform: translateY(0)  translateX(0)  scale(1); }
-  33%       { transform: translateY(-6%) translateX(4%)  scale(1.04); }
-  66%       { transform: translateY(4%)  translateX(-5%) scale(0.97); }
-}
-
-@keyframes blob-float-2 {
-  0%, 100% { transform: translateY(0)  translateX(0)  scale(1); }
-  33%       { transform: translateY(8%)  translateX(-6%) scale(0.96); }
-  66%       { transform: translateY(-5%) translateX(8%)  scale(1.06); }
-}
-
-.animate-blob-primary {
-  animation: blob-morph 14s ease-in-out infinite, blob-float 10s ease-in-out infinite;
-}
-
-.animate-blob-secondary {
-  animation: blob-morph 11s ease-in-out infinite reverse, blob-float-2 13s ease-in-out infinite;
-}
