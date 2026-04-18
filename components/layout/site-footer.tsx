@@ -13,11 +13,11 @@ export function SiteFooter() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 text-foreground">
               <Image
-                src="/logo.jpg"
+                src="/logo.png"
                 alt={companyInfo.name}
-                width={36}
-                height={36}
-                className="rounded-lg"
+                width={44}
+                height={44}
+                className="drop-shadow-[0_0_8px_rgba(255,90,31,0.5)]"
               />
               <span className="text-lg font-semibold">{companyInfo.name}</span>
             </Link>

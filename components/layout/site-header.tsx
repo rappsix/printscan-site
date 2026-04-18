@@ -20,11 +20,11 @@ export function SiteHeader() {
           className="flex items-center gap-2 text-lg font-semibold tracking-tight"
         >
           <Image
-            src="/logo.jpg"
+            src="/logo.png"
             alt={companyInfo.name}
-            width={36}
-            height={36}
-            className="rounded-lg"
+            width={44}
+            height={44}
+            className="drop-shadow-[0_0_8px_rgba(255,90,31,0.5)]"
           />
           <span className="hidden sm:inline">{companyInfo.name}</span>
         </Link>
