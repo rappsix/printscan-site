@@ -1,0 +1,106 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import { cn } from "@/lib/class-merger";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { SiteContainer } from "@/components/ui/site-container";
+import {
+  portfolioProjects,
+  type PortfolioCategory,
+} from "@/content/portfolio-projects";
+
+type Filter = "all" | PortfolioCategory;
+
+const categoryFilters: Array<{ value: Filter; label: string }> = [
+  { value: "all", label: "Все работы" },
+  { value: "3d-print", label: "3D-печать" },
+  { value: "3d-scan", label: "Сканирование" },
+  { value: "reverse-engineering", label: "Реверс-инжиниринг" },
+  { value: "3d-modeling", label: "Моделирование" },
+  { value: "mockups", label: "Макеты" },
+  { value: "post-processing", label: "Постобработка" },
+];
+
+export default function PortfolioPage() {
+  const [activeFilter, setActiveFilter] = useState<Filter>("all");
+
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === "all") return portfolioProjects;
+    return portfolioProjects.filter((project) => project.category === activeFilter);
+  }, [activeFilter]);
+
+  return (
+    <>
+      <section className="relative border-b border-border/60 bg-surface/40 py-20 sm:py-24">
+        <div className="absolute inset-0 grid-bg opacity-40" />
+        <SiteContainer className="relative">
+          <SectionHeading
+            eyebrow="Портфолио"
+            title={
+              <>
+                Наши <span className="text-brand">работы</span>
+              </>
+            }
+            description="Кейсы по 3D-печати, сканированию, реверс-инжинирингу и макетированию. Выберите категорию или листайте подряд."
+          />
+        </SiteContainer>
+      </section>
+
+      <section className="py-12">
+        <SiteContainer>
+          <div className="flex flex-wrap gap-2">
+            {categoryFilters.map((filter) => (
+              <button
+                key={filter.value}
+                type="button"
+                onClick={() => setActiveFilter(filter.value)}
+                className={cn(
+                  "rounded-full border px-4 py-2 text-sm transition-colors",
+                  activeFilter === filter.value
+                    ? "border-brand bg-brand-soft text-brand"
+                    : "border-border text-muted hover:border-brand/60 hover:text-brand",
+                )}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredProjects.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/portfolio/${project.slug}`}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface-raised/60 transition-all hover:-translate-y-1 hover:border-brand/60"
+              >
+                <div className="aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-surface-raised to-border-bright">
+                  <div className="grid h-full w-full place-items-center text-sm text-subtle">
+                    {project.categoryLabel}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-3 p-6">
+                  <span className="text-xs uppercase tracking-[0.18em] text-brand">
+                    {project.categoryLabel} · {project.year}
+                  </span>
+                  <h3 className="text-lg font-semibold text-foreground group-hover:text-brand">
+                    {project.title}
+                  </h3>
+                  <p className="line-clamp-2 text-sm text-muted">
+                    {project.summary}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {filteredProjects.length === 0 ? (
+            <p className="mt-16 text-center text-sm text-muted">
+              В этой категории пока нет опубликованных работ.
+            </p>
+          ) : null}
+        </SiteContainer>
+      </section>
+    </>
+  );
+}
