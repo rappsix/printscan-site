@@ -30,25 +30,6 @@ function RotatingCore() {
   );
 }
 
-function AmbientParticles() {
-  const positions = Array.from({ length: 18 }, (_, index) => {
-    const angle = (index / 18) * Math.PI * 2;
-    return [Math.cos(angle) * 2.2, Math.sin(angle * 1.3) * 1.2, Math.sin(angle) * 2.2] as const;
-  });
-
-  return (
-    <group>
-      {positions.map((pos, index) => (
-        <Float key={index} speed={0.6 + (index % 3) * 0.2} rotationIntensity={0.2} floatIntensity={0.8}>
-          <mesh position={pos}>
-            <sphereGeometry args={[0.05, 8, 8]} />
-            <meshBasicMaterial color="#3fb0ff" />
-          </mesh>
-        </Float>
-      ))}
-    </group>
-  );
-}
 
 export function HeroScene() {
   return (
@@ -59,13 +40,11 @@ export function HeroScene() {
       performance={{ min: 0.5 }}
     >
       <AdaptiveDpr pixelated />
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={1.4} />
-      <directionalLight position={[-4, -3, -4]} intensity={0.3} color="#1a2a4a" />
-      <pointLight position={[-5, -2, 2]} intensity={0.8} color="#3fb0ff" />
-      <pointLight position={[3, 4, 2]} intensity={0.5} color="#ff7944" />
+      <ambientLight intensity={0.35} color="#ff8844" />
+      <directionalLight position={[5, 5, 5]} intensity={1.8} color="#ffffff" />
+      <pointLight position={[2, 3, 3]} intensity={1.2} color="#ff6622" />
+      <pointLight position={[-4, -2, 2]} intensity={0.5} color="#3fb0ff" />
       <RotatingCore />
-      <AmbientParticles />
     </Canvas>
   );
 }
