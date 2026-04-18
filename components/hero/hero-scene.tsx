@@ -20,8 +20,10 @@ function RotatingCore() {
         <torusKnotGeometry args={[1, 0.32, 128, 24]} />
         <MeshDistortMaterial
           color="#ff5a1f"
+          emissive="#ff4400"
+          emissiveIntensity={0.35}
           roughness={0.15}
-          metalness={0.55}
+          metalness={0.5}
           distort={0.32}
           speed={1.4}
         />
