@@ -62,13 +62,12 @@ export function HeroScene() {
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true }}
     >
-      <color attach="background" args={["transparent"]} />
       <ambientLight intensity={0.45} />
       <directionalLight position={[5, 5, 5]} intensity={1.1} />
       <pointLight position={[-5, -2, 2]} intensity={0.6} color="#3fb0ff" />
       <RotatingCore />
       <AmbientParticles />
-      <Environment preset="city" />
+      <Environment preset="city" background={false} />
     </Canvas>
   );
 }
