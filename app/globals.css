@@ -67,3 +67,10 @@ body {
     cursor: none !important;
   }
 }
+
+@keyframes ripple-burst {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

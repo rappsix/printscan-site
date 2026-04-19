@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useEffect, useRef } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { AdaptiveDpr, Float, MeshDistortMaterial } from "@react-three/drei";
 import { MathUtils } from "three";
 import type { Group, Mesh } from "three";
@@ -9,6 +9,43 @@ import type { Group, Mesh } from "three";
 function RotatingCore() {
   const meshRef = useRef<Mesh>(null);
   const groupRef = useRef<Group>(null);
+  const gyro = useRef({ x: 0, y: 0 });
+  const { gl } = useThree();
+
+  useEffect(() => {
+    const canvas = gl.domElement;
+    const isMobile = !window.matchMedia("(pointer: fine)").matches;
+    if (!isMobile) return;
+
+    function onOrientation(e: DeviceOrientationEvent) {
+      const beta = e.beta ?? 0;   // -180..180 front-back tilt
+      const gamma = e.gamma ?? 0; // -90..90 left-right tilt
+      gyro.current.x = MathUtils.clamp(gamma / 30, -1, 1);
+      gyro.current.y = MathUtils.clamp((beta - 45) / 40, -1, 1);
+    }
+
+    window.addEventListener("deviceorientation", onOrientation);
+
+    // iOS 13+ requires permission
+    if (
+      typeof DeviceOrientationEvent !== "undefined" &&
+      // @ts-expect-error – iOS-only API
+      typeof DeviceOrientationEvent.requestPermission === "function"
+    ) {
+      const requestOnTap = () => {
+        // @ts-expect-error – iOS-only API
+        DeviceOrientationEvent.requestPermission().catch(() => {});
+        canvas.removeEventListener("click", requestOnTap);
+      };
+      canvas.addEventListener("click", requestOnTap);
+      return () => {
+        window.removeEventListener("deviceorientation", onOrientation);
+        canvas.removeEventListener("click", requestOnTap);
+      };
+    }
+
+    return () => window.removeEventListener("deviceorientation", onOrientation);
+  }, [gl]);
 
   useFrame((state, delta) => {
     if (!meshRef.current || !groupRef.current) return;
@@ -16,14 +53,18 @@ function RotatingCore() {
     meshRef.current.rotation.x += delta * 0.15;
     meshRef.current.rotation.y += delta * 0.25;
 
+    const isMobile = !window.matchMedia("(pointer: fine)").matches;
+    const targetY = isMobile ? gyro.current.x * 0.5 : state.pointer.x * 0.45;
+    const targetX = isMobile ? gyro.current.y * 0.35 : -state.pointer.y * 0.3;
+
     groupRef.current.rotation.y = MathUtils.lerp(
       groupRef.current.rotation.y,
-      state.pointer.x * 0.45,
+      targetY,
       delta * 2.5,
     );
     groupRef.current.rotation.x = MathUtils.lerp(
       groupRef.current.rotation.x,
-      -state.pointer.y * 0.3,
+      targetX,
       delta * 2.5,
     );
   });

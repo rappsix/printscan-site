@@ -7,6 +7,7 @@ import { YandexMetrika } from "@/components/analytics/yandex-metrika";
 import { LocalBusinessSchema } from "@/components/seo/local-business-schema";
 import { CursorSpotlight } from "@/components/ui/cursor-spotlight";
 import { CustomCursor } from "@/components/ui/custom-cursor";
+import { ScrollProgressBar } from "@/components/ui/scroll-progress-bar";
 import { companyInfo } from "@/content/company-info";
 
 const geistSans = Geist({
@@ -72,6 +73,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-screen flex-col bg-background text-foreground">
         <LocalBusinessSchema />
+        <ScrollProgressBar />
         <CustomCursor />
         <CursorSpotlight />
         <SiteHeader />
