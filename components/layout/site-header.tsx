@@ -7,10 +7,12 @@ import { Menu, Phone, X } from "lucide-react";
 import { companyInfo } from "@/content/company-info";
 import { cn } from "@/lib/class-merger";
 import { BrandButton } from "@/components/ui/brand-button";
+import { useContactModal } from "@/components/lead-capture/modal-provider";
 import { primaryNavLinks } from "./main-navigation";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { openModal } = useContactModal();
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
@@ -49,7 +51,7 @@ export function SiteHeader() {
             <Phone size={16} />
             {companyInfo.phone}
           </a>
-          <BrandButton href="/#contact" variant="primary" className="py-2 text-sm">
+          <BrandButton as="button" onClick={openModal} variant="primary" className="py-2 text-sm">
             Оставить заявку
           </BrandButton>
         </div>
@@ -89,7 +91,7 @@ export function SiteHeader() {
               <Phone size={16} />
               {companyInfo.phone}
             </a>
-            <BrandButton href="/#contact" className="w-full py-2 text-sm">
+            <BrandButton as="button" onClick={openModal} className="w-full py-2 text-sm">
               Оставить заявку
             </BrandButton>
           </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { ServiceIcon } from "@/components/icons/service-icon";
 import { BrandButton } from "@/components/ui/brand-button";
+import { OpenModalButton } from "@/components/lead-capture/open-modal-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SiteContainer } from "@/components/ui/site-container";
 import { portfolioProjects } from "@/content/portfolio-projects";
@@ -55,9 +56,9 @@ function ServiceHero({ service }: { service: ServiceEntry }) {
               {service.description}
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
-              <BrandButton href="/#inquiry">
+              <OpenModalButton>
                 Оставить заявку <ArrowRight size={16} />
-              </BrandButton>
+              </OpenModalButton>
               <BrandButton href="/portfolio" variant="outline">
                 Примеры работ
               </BrandButton>
@@ -240,7 +241,7 @@ function ServiceCta() {
             Опишите, что нужно сделать, и прикрепите файл — STL, чертёж или
             фото. Ответим в течение рабочего дня.
           </p>
-          <BrandButton href="/#inquiry">Оставить заявку</BrandButton>
+          <OpenModalButton>Оставить заявку</OpenModalButton>
         </div>
       </SiteContainer>
     </section>

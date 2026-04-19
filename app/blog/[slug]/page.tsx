@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Clock } from "lucide-react";
 import { BrandButton } from "@/components/ui/brand-button";
+import { OpenModalButton } from "@/components/lead-capture/open-modal-button";
 import { SiteContainer } from "@/components/ui/site-container";
 import {
   blogEntries,
@@ -81,9 +82,9 @@ export default async function BlogEntryPage({ params }: BlogPageParams) {
             ))}
           </div>
           <div className="mt-12 flex flex-wrap gap-3">
-            <BrandButton href="/#inquiry">
+            <OpenModalButton>
               Обсудить задачу <ArrowRight size={16} />
-            </BrandButton>
+            </OpenModalButton>
             <BrandButton href="/blog" variant="outline">
               Ещё статьи
             </BrandButton>

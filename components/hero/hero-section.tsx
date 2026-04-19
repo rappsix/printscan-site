@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { BrandButton } from "@/components/ui/brand-button";
+import { useContactModal } from "@/components/lead-capture/modal-provider";
 import { MagneticWrapper } from "@/components/ui/magnetic-wrapper";
 import { SiteContainer } from "@/components/ui/site-container";
 import { TextScramble } from "@/components/ui/text-scramble";
@@ -18,6 +19,7 @@ const HeroScene = dynamic(
 );
 
 export function HeroSection() {
+  const { openModal } = useContactModal();
   return (
     <section className="relative overflow-hidden border-b border-border/60">
       <div className="pointer-events-none absolute inset-0 grid-bg opacity-50" />
@@ -54,7 +56,7 @@ export function HeroSection() {
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <MagneticWrapper>
-              <BrandButton href="/#contact" variant="primary" className="gap-2">
+              <BrandButton as="button" onClick={openModal} variant="primary" className="gap-2">
                 Получить консультацию <ArrowRight size={16} />
               </BrandButton>
             </MagneticWrapper>

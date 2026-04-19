@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { BrandButton } from "@/components/ui/brand-button";
+import { OpenModalButton } from "@/components/lead-capture/open-modal-button";
 import { SiteContainer } from "@/components/ui/site-container";
 import {
   findProjectBySlug,
@@ -99,9 +100,9 @@ export default async function ProjectPage({ params }: ProjectPageParams) {
             <h2 className="max-w-2xl text-3xl font-semibold text-foreground sm:text-4xl">
               Похожая задача? Обсудим
             </h2>
-            <BrandButton href="/#inquiry">
+            <OpenModalButton>
               Оставить заявку <ArrowRight size={16} />
-            </BrandButton>
+            </OpenModalButton>
           </div>
         </SiteContainer>
       </section>

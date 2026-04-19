@@ -9,6 +9,7 @@ import { CursorSpotlight } from "@/components/ui/cursor-spotlight";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { ScrollProgressBar } from "@/components/ui/scroll-progress-bar";
 import { companyInfo } from "@/content/company-info";
+import { ContactModalProvider } from "@/components/lead-capture/modal-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -76,9 +77,11 @@ export default function RootLayout({
         <ScrollProgressBar />
         <CustomCursor />
         <CursorSpotlight />
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <ContactModalProvider>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </ContactModalProvider>
         <YandexMetrika />
       </body>
     </html>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Cpu, Printer, ScanLine } from "lucide-react";
 import { BrandButton } from "@/components/ui/brand-button";
+import { OpenModalButton } from "@/components/lead-capture/open-modal-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SiteContainer } from "@/components/ui/site-container";
 import { companyInfo } from "@/content/company-info";
@@ -178,7 +179,7 @@ function AboutCta() {
             цех и примеры работ.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <BrandButton href="/#inquiry">Оставить заявку</BrandButton>
+            <OpenModalButton>Оставить заявку</OpenModalButton>
             <BrandButton href="/portfolio" variant="outline">
               Смотреть портфолио <ArrowRight size={16} />
             </BrandButton>
