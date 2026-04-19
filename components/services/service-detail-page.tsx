@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock, Wallet } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { ServiceIcon } from "@/components/icons/service-icon";
 import { BrandButton } from "@/components/ui/brand-button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -77,11 +77,6 @@ function ServiceMetaCard({ service }: { service: ServiceEntry }) {
         <Clock size={16} className="text-brand" />
         <span className="uppercase tracking-[0.18em]">Сроки</span>
         <span className="ml-auto text-foreground">{service.deliveryHint}</span>
-      </div>
-      <div className="flex items-center gap-3 text-sm text-subtle">
-        <Wallet size={16} className="text-brand" />
-        <span className="uppercase tracking-[0.18em]">Стоимость</span>
-        <span className="ml-auto text-foreground">{service.priceHint}</span>
       </div>
       {service.technologies ? (
         <div className="border-t border-border pt-4 text-sm">

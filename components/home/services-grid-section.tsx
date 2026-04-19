@@ -40,8 +40,7 @@ export function ServicesGridSection() {
                 </p>
               </div>
               <div className="flex items-center justify-between border-t border-border/60 pt-4 text-xs uppercase tracking-[0.14em]">
-                <span className="text-muted">{service.priceHint}</span>
-                <span className="inline-flex items-center gap-1 text-brand transition-transform group-hover:translate-x-1">
+<span className="inline-flex items-center gap-1 text-brand transition-transform group-hover:translate-x-1">
                   Подробнее
                   <ArrowUpRight size={14} />
                 </span>
