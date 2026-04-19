@@ -15,7 +15,7 @@ function DesktopSpotlight() {
   const y = useMotionValue(-9999);
   const springX = useSpring(x, { stiffness: 60, damping: 18 });
   const springY = useSpring(y, { stiffness: 60, damping: 18 });
-  const bg = useMotionTemplate`radial-gradient(650px at ${springX}px ${springY}px, rgba(255,90,31,0.06), transparent 80%)`;
+  const bg = useMotionTemplate`radial-gradient(700px at ${springX}px ${springY}px, rgba(255,90,31,0.18), transparent 75%)`;
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
@@ -28,7 +28,8 @@ function DesktopSpotlight() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed inset-0 z-30"
+      aria-hidden
+      className="pointer-events-none fixed inset-0 z-40"
       style={{ background: bg }}
     />
   );
@@ -37,11 +38,12 @@ function DesktopSpotlight() {
 function MobileScrollGlow() {
   const { scrollYProgress } = useScroll();
   const gradientY = useTransform(scrollYProgress, [0, 1], [10, 90]);
-  const bg = useMotionTemplate`radial-gradient(500px at 50% ${gradientY}%, rgba(255,90,31,0.05), transparent 80%)`;
+  const bg = useMotionTemplate`radial-gradient(500px at 50% ${gradientY}%, rgba(255,90,31,0.12), transparent 75%)`;
 
   return (
     <motion.div
-      className="pointer-events-none fixed inset-0 z-30"
+      aria-hidden
+      className="pointer-events-none fixed inset-0 z-40"
       style={{ background: bg }}
     />
   );
@@ -50,10 +52,10 @@ function MobileScrollGlow() {
 export function CursorSpotlight() {
   return (
     <>
-      <div className="hidden lg:contents">
+      <div className="hidden lg:block">
         <DesktopSpotlight />
       </div>
-      <div className="contents lg:hidden">
+      <div className="block lg:hidden">
         <MobileScrollGlow />
       </div>
     </>
