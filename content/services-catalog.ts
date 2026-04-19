@@ -46,7 +46,7 @@ export const servicesCatalog: ServiceEntry[] = [
     ],
     technologies: ["FDM", "SLA / LCD"],
     deliveryHint: "от 1 рабочего дня",
-    priceHint: "от 30 ₽ за 1 см³",
+    priceHint: "уточните по запросу",
     icon: "printer",
   },
   {
@@ -63,7 +63,7 @@ export const servicesCatalog: ServiceEntry[] = [
       "Готовая модель в STL / OBJ / STEP",
     ],
     deliveryHint: "от 1 дня",
-    priceHint: "от 2 500 ₽",
+    priceHint: "уточните по запросу",
     icon: "scan",
   },
   {
@@ -80,7 +80,7 @@ export const servicesCatalog: ServiceEntry[] = [
       "Передача в производство под ключ",
     ],
     deliveryHint: "от 3 дней",
-    priceHint: "от 5 000 ₽",
+    priceHint: "уточните по запросу",
     icon: "wrench",
   },
   {
@@ -97,7 +97,7 @@ export const servicesCatalog: ServiceEntry[] = [
       "Художественное и техническое моделирование",
     ],
     deliveryHint: "от 2 дней",
-    priceHint: "от 3 000 ₽",
+    priceHint: "уточните по запросу",
     icon: "cube",
   },
   {
@@ -114,7 +114,7 @@ export const servicesCatalog: ServiceEntry[] = [
       "Подсветка, подвижные элементы — под заказ",
     ],
     deliveryHint: "от 2 недель",
-    priceHint: "по ТЗ",
+    priceHint: "уточните по запросу",
     icon: "home",
   },
   {
@@ -131,7 +131,7 @@ export const servicesCatalog: ServiceEntry[] = [
       "Маркировка и упаковка",
     ],
     deliveryHint: "от 1 дня",
-    priceHint: "от 1 000 ₽",
+    priceHint: "уточните по запросу",
     icon: "sparkles",
   },
 ];

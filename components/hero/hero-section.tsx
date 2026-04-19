@@ -11,7 +11,7 @@ const HeroScene = dynamic(
   () => import("./hero-scene").then((m) => m.HeroScene),
   {
     ssr: false,
-    loading: () => <div className="h-full w-full animate-pulse rounded-[32px] bg-surface-raised" />,
+    loading: () => <div className="h-full w-full animate-pulse bg-surface-raised" />,
   },
 );
 
@@ -21,8 +21,18 @@ export function HeroSection() {
       <div className="pointer-events-none absolute inset-0 grid-bg opacity-50" />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl" />
 
-      <SiteContainer className="relative grid gap-10 py-16 sm:py-24 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-        <div className="flex flex-col justify-center gap-7">
+      {/* 3D model — mobile: full-bleed backdrop; desktop: right-column panel */}
+      <div className="absolute inset-0 lg:inset-y-8 lg:left-[51%] lg:right-8 lg:overflow-hidden lg:rounded-[32px]">
+        <HeroSceneBoundary fallback={<div className="h-full w-full bg-surface-raised" />}>
+          <HeroScene />
+        </HeroSceneBoundary>
+        {/* fades model into background so text stays readable on mobile */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/10 lg:hidden" />
+      </div>
+
+      <SiteContainer className="relative z-10 grid gap-10 py-16 sm:py-24 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+        {/* text anchored to bottom on mobile so model is visible above */}
+        <div className="flex min-h-[88svh] flex-col justify-end gap-7 pb-10 lg:min-h-0 lg:justify-center lg:pb-0">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border-bright bg-surface-raised/60 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.22em] text-brand">
             <Sparkles size={14} />
             B2B · с {companyInfo.founded} года
@@ -40,7 +50,7 @@ export function HeroSection() {
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <BrandButton href="/#contact" variant="primary" className="gap-2">
-              Рассчитать проект <ArrowRight size={16} />
+              Получить консультацию <ArrowRight size={16} />
             </BrandButton>
             <BrandButton href="/portfolio" variant="outline">
               Смотреть работы
@@ -62,11 +72,8 @@ export function HeroSection() {
           </dl>
         </div>
 
-        <div className="relative aspect-square w-full max-w-[560px] justify-self-center overflow-hidden rounded-[32px]">
-          <HeroSceneBoundary fallback={<div className="h-full w-full bg-surface-raised" />}>
-            <HeroScene />
-          </HeroSceneBoundary>
-        </div>
+        {/* spacer keeps the desktop grid two-column */}
+        <div className="hidden lg:block" />
       </SiteContainer>
     </section>
   );
