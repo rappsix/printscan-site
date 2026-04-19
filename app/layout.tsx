@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { YandexMetrika } from "@/components/analytics/yandex-metrika";
 import { LocalBusinessSchema } from "@/components/seo/local-business-schema";
+import { CursorSpotlight } from "@/components/ui/cursor-spotlight";
 import { companyInfo } from "@/content/company-info";
 
 const geistSans = Geist({
@@ -70,6 +71,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-screen flex-col bg-background text-foreground">
         <LocalBusinessSchema />
+        <CursorSpotlight />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
