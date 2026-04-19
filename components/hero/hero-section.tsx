@@ -3,7 +3,9 @@
 import dynamic from "next/dynamic";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { BrandButton } from "@/components/ui/brand-button";
+import { MagneticWrapper } from "@/components/ui/magnetic-wrapper";
 import { SiteContainer } from "@/components/ui/site-container";
+import { TextScramble } from "@/components/ui/text-scramble";
 import { companyInfo } from "@/content/company-info";
 import { HeroSceneBoundary } from "./hero-scene-boundary";
 
@@ -38,10 +40,12 @@ export function HeroSection() {
             B2B · с {companyInfo.founded} года
           </span>
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-            3D-печать, сканирование{" "}
-            <span className="text-brand">и макетирование</span>
+            <TextScramble text="3D-печать, сканирование " delay={200} duration={900} />
+            <span className="text-brand">
+              <TextScramble text="и макетирование" delay={600} duration={700} />
+            </span>
             <br className="hidden sm:block" />
-            для бизнеса в Пензе
+            <TextScramble text="для бизнеса в Пензе" delay={1000} duration={700} />
           </h1>
           <p className="max-w-xl text-lg text-muted sm:text-xl">
             Работаем с юрлицами и ИП: пластики под задачу, точные сканы
@@ -49,12 +53,16 @@ export function HeroSection() {
             Пензе и области.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <BrandButton href="/#contact" variant="primary" className="gap-2">
-              Получить консультацию <ArrowRight size={16} />
-            </BrandButton>
-            <BrandButton href="/portfolio" variant="outline">
-              Смотреть работы
-            </BrandButton>
+            <MagneticWrapper>
+              <BrandButton href="/#contact" variant="primary" className="gap-2">
+                Получить консультацию <ArrowRight size={16} />
+              </BrandButton>
+            </MagneticWrapper>
+            <MagneticWrapper>
+              <BrandButton href="/portfolio" variant="outline">
+                Смотреть работы
+              </BrandButton>
+            </MagneticWrapper>
           </div>
           <dl className="mt-4 grid grid-cols-3 gap-5 border-t border-border/60 pt-6 text-sm">
             <div>

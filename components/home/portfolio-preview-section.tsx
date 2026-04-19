@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { portfolioProjects } from "@/content/portfolio-projects";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SiteContainer } from "@/components/ui/site-container";
+import { TiltCard } from "@/components/ui/tilt-card";
 
 export function PortfolioPreviewSection() {
   const featuredProjects = portfolioProjects.slice(0, 6);
@@ -30,28 +31,29 @@ export function PortfolioPreviewSection() {
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((project) => (
-            <Link
-              key={project.slug}
-              href={`/portfolio/${project.slug}`}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface-raised/60 transition-all duration-300 hover:-translate-y-1 hover:border-brand/60"
-            >
-              <div className="aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-surface-raised to-border-bright">
-                <div className="grid h-full w-full place-items-center text-sm text-subtle">
-                  {project.categoryLabel}
+            <TiltCard key={project.slug} maxAngle={8}>
+              <Link
+                href={`/portfolio/${project.slug}`}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface-raised/60 transition-all duration-300 hover:border-brand/60"
+              >
+                <div className="aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-surface-raised to-border-bright">
+                  <div className="grid h-full w-full place-items-center text-sm text-subtle">
+                    {project.categoryLabel}
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col gap-3 p-6">
-                <span className="text-xs uppercase tracking-[0.18em] text-brand">
-                  {project.categoryLabel} · {project.year}
-                </span>
-                <h3 className="text-lg font-semibold leading-tight text-foreground transition-colors group-hover:text-brand">
-                  {project.title}
-                </h3>
-                <p className="line-clamp-2 text-sm text-muted">
-                  {project.summary}
-                </p>
-              </div>
-            </Link>
+                <div className="flex flex-col gap-3 p-6">
+                  <span className="text-xs uppercase tracking-[0.18em] text-brand">
+                    {project.categoryLabel} · {project.year}
+                  </span>
+                  <h3 className="text-lg font-semibold leading-tight text-foreground transition-colors group-hover:text-brand">
+                    {project.title}
+                  </h3>
+                  <p className="line-clamp-2 text-sm text-muted">
+                    {project.summary}
+                  </p>
+                </div>
+              </Link>
+            </TiltCard>
           ))}
         </div>
       </SiteContainer>
