@@ -40,12 +40,12 @@ export function HeroSection() {
             B2B · с {companyInfo.founded} года
           </span>
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-            <TextScramble text="3D-печать, сканирование " delay={200} duration={900} />
+            <TextScramble text="3D-печать, сканирование " delay={300} duration={1800} />
             <span className="text-brand">
-              <TextScramble text="и макетирование" delay={600} duration={700} />
+              <TextScramble text="и макетирование" delay={1200} duration={1400} />
             </span>
             <br className="hidden sm:block" />
-            <TextScramble text="для бизнеса в Пензе" delay={1000} duration={700} />
+            <TextScramble text="для бизнеса в Пензе" delay={2000} duration={1400} />
           </h1>
           <p className="max-w-xl text-lg text-muted sm:text-xl">
             Работаем с юрлицами и ИП: пластики под задачу, точные сканы
