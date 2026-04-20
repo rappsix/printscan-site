@@ -16,9 +16,9 @@ export const companyStats: CompanyStat[] = [
     hint: "каждый со своей историей",
   },
   {
-    value: "10+",
-    label: "принтеров в парке",
-    hint: "FDM и SLA",
+    value: "от 1 дня",
+    label: "срок изготовления",
+    hint: "для типовых заказов",
   },
   {
     value: "Выезд",
