@@ -20,9 +20,4 @@ export const companyStats: CompanyStat[] = [
     label: "срок изготовления",
     hint: "для типовых заказов",
   },
-  {
-    value: "Выезд",
-    label: "на объект",
-    hint: "Пенза и область",
-  },
 ];

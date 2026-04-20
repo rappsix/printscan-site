@@ -5,7 +5,7 @@ export function CompanyStatsSection() {
   return (
     <section className="border-y border-border/60 bg-surface/60 py-16">
       <SiteContainer>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-2xl gap-8 sm:grid-cols-3">
           {companyStats.map((stat) => (
             <div key={stat.label} className="flex flex-col gap-2">
               <p className="text-5xl font-semibold tracking-tight text-foreground sm:text-6xl">
