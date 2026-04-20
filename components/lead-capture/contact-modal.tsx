@@ -56,12 +56,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   }, [status, onClose]);
 
   function handleBackdropClick(e: React.MouseEvent<HTMLDialogElement>) {
-    const rect = dialogRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const { clientX, clientY } = e;
-    if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) {
-      onClose();
-    }
+    if (e.target === dialogRef.current) onClose();
   }
 
   async function onSubmit(data: ContactLead) {
