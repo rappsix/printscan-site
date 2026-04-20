@@ -1,74 +1,55 @@
 "use client";
 
-import { useRef, Component, type ReactNode } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, AdaptiveDpr } from "@react-three/drei";
+import { useRef, useMemo, Component, type ReactNode } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { AdaptiveDpr } from "@react-three/drei";
 import { MathUtils } from "three";
-import type { Group, Mesh } from "three";
+import type { Points } from "three";
 
-type ObjConfig = {
-  side: "left" | "right";
-  baseY: number;
+type LayerProps = {
+  count: number;
+  spread: [number, number];
+  size: number;
+  opacity: number;
   scrollFactor: number;
-  geometry: "icosahedron" | "octahedron" | "torus" | "sphere";
-  scale: number;
-  speed: [number, number];
+  rotationSpeed: number;
 };
 
-const OBJECTS: ObjConfig[] = [
-  { side: "left",  baseY: -1.0, scrollFactor: 10,  geometry: "icosahedron", scale: 1.3, speed: [0.05, 0.08] },
-  { side: "left",  baseY:  2.5, scrollFactor: 16,  geometry: "torus",       scale: 1.1, speed: [0.07, 0.04] },
-  { side: "right", baseY:  1.0, scrollFactor: 13,  geometry: "octahedron",  scale: 1.2, speed: [0.06, 0.09] },
-  { side: "right", baseY: -2.5, scrollFactor: 7,   geometry: "sphere",      scale: 1.0, speed: [0.04, 0.07] },
-];
+function ParticleLayer({ count, spread, size, opacity, scrollFactor, rotationSpeed }: LayerProps) {
+  const ref = useRef<Points>(null);
 
-function SideObject({ cfg }: { cfg: ObjConfig }) {
-  const groupRef = useRef<Group>(null);
-  const meshRef = useRef<Mesh>(null);
-  const { viewport } = useThree();
+  const positions = useMemo(() => {
+    const arr = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      arr[i * 3]     = (Math.random() - 0.5) * spread[0];
+      arr[i * 3 + 1] = (Math.random() - 0.5) * spread[1];
+      arr[i * 3 + 2] = (Math.random() - 0.5) * 4;
+    }
+    return arr;
+  }, [count, spread]);
 
   useFrame((_, delta) => {
-    if (!groupRef.current || !meshRef.current) return;
-
-    meshRef.current.rotation.x += delta * cfg.speed[0];
-    meshRef.current.rotation.y += delta * cfg.speed[1];
-
+    if (!ref.current) return;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = docHeight > 0 ? window.scrollY / docHeight : 0;
-
-    const targetY = cfg.baseY + progress * cfg.scrollFactor;
-    groupRef.current.position.y = MathUtils.lerp(
-      groupRef.current.position.y,
-      targetY,
-      delta * 5,
-    );
-
-    groupRef.current.position.x =
-      (viewport.width / 2 + 0.9) * (cfg.side === "left" ? -1 : 1);
+    const targetY = progress * scrollFactor;
+    ref.current.position.y = MathUtils.lerp(ref.current.position.y, targetY, delta * 4);
+    ref.current.rotation.y += delta * rotationSpeed;
   });
 
   return (
-    <group ref={groupRef}>
-      <Float speed={0.8} rotationIntensity={0.18} floatIntensity={0.35}>
-        <mesh ref={meshRef} scale={cfg.scale}>
-          {cfg.geometry === "icosahedron" && <icosahedronGeometry args={[1, 1]} />}
-          {cfg.geometry === "octahedron"  && <octahedronGeometry  args={[1, 0]} />}
-          {cfg.geometry === "torus"       && <torusGeometry       args={[0.8, 0.34, 16, 48]} />}
-          {cfg.geometry === "sphere"      && <sphereGeometry      args={[1, 32, 32]} />}
-          <MeshDistortMaterial
-            color="#ff5a1f"
-            emissive="#ff5a1f"
-            emissiveIntensity={0.15}
-            roughness={0.13}
-            metalness={0.65}
-            distort={0.22}
-            speed={1.1}
-            transparent
-            opacity={0.88}
-          />
-        </mesh>
-      </Float>
-    </group>
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <pointsMaterial
+        color="#ff5a1f"
+        size={size}
+        sizeAttenuation
+        transparent
+        opacity={opacity}
+      />
+    </points>
   );
 }
 
@@ -86,23 +67,44 @@ export function ScrollSideScene() {
     <SceneBoundary>
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 hidden xl:block"
+        className="pointer-events-none fixed inset-0"
         style={{ zIndex: 1 }}
       >
         <Canvas
-          camera={{ position: [0, 0, 10], fov: 50 }}
+          camera={{ position: [0, 0, 8], fov: 60 }}
           dpr={[1, 1.5]}
           gl={{ antialias: false, alpha: true, powerPreference: "low-power" }}
           performance={{ min: 0.5 }}
           style={{ width: "100%", height: "100%" }}
         >
           <AdaptiveDpr pixelated />
-          <ambientLight intensity={0.1} />
-          <directionalLight position={[3, 5, 3]} intensity={2.5} color="#ffffff" />
-          <pointLight position={[-2, -2, 1]} intensity={0.2} color="#ff5a1f" />
-          {OBJECTS.map((cfg, i) => (
-            <SideObject key={i} cfg={cfg} />
-          ))}
+          {/* far layer — slow, tiny */}
+          <ParticleLayer
+            count={70}
+            spread={[22, 16]}
+            size={0.055}
+            opacity={0.35}
+            scrollFactor={3}
+            rotationSpeed={0.015}
+          />
+          {/* mid layer */}
+          <ParticleLayer
+            count={45}
+            spread={[20, 14]}
+            size={0.09}
+            opacity={0.45}
+            scrollFactor={6}
+            rotationSpeed={0.022}
+          />
+          {/* near layer — fast, bright */}
+          <ParticleLayer
+            count={25}
+            spread={[18, 12]}
+            size={0.14}
+            opacity={0.55}
+            scrollFactor={11}
+            rotationSpeed={0.03}
+          />
         </Canvas>
       </div>
     </SceneBoundary>
