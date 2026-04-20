@@ -85,7 +85,7 @@ export const servicesCatalog: ServiceEntry[] = [
   },
   {
     slug: "3d-modeling",
-    title: "3D-моделирование и фото → модель",
+    title: "3D-моделирование по фото и эскизам",
     shortTitle: "3D-моделирование",
     tagline: "Пришлите фото — сделаем 3D-модель. Также по эскизам и с нуля.",
     description:
