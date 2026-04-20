@@ -62,11 +62,6 @@ body {
   animation: float-slow 6s ease-in-out infinite;
 }
 
-@media (pointer: fine) {
-  *, *::before, *::after {
-    cursor: none !important;
-  }
-}
 
 @keyframes ripple-burst {
   to {

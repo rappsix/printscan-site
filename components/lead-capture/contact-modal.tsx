@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle, Loader2, X } from "lucide-react";
 import { contactLeadSchema, type ContactLead } from "@/lib/lead-capture/schema";
 import { cn } from "@/lib/class-merger";
-import { CustomCursor } from "@/components/ui/custom-cursor";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -88,7 +87,6 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       aria-labelledby="modal-title"
       className="m-auto w-full max-w-md overflow-hidden rounded-2xl border border-border bg-[#0d1017] p-0 text-foreground shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm"
     >
-      <CustomCursor />
       <div className="flex items-center justify-between border-b border-border px-6 py-4">
         <h2 id="modal-title" className="text-base font-semibold">
           Оставить заявку
