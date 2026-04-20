@@ -1,6 +1,27 @@
+"use client";
+
+import { motion } from "motion/react";
 import { processStages } from "@/content/process-stages";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SiteContainer } from "@/components/ui/site-container";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 export function ProcessStepsSection() {
   return (
@@ -18,10 +39,22 @@ export function ProcessStepsSection() {
           всегда знаете, на каком этапе находится ваш заказ."
         />
 
-        <ol className="mt-14 grid gap-5 lg:grid-cols-5">
+        <motion.ol
+          className="mt-14 grid gap-5 lg:grid-cols-5"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+        >
           {processStages.map((stage, index) => (
-            <li
+            <motion.li
               key={stage.number}
+              variants={cardVariants}
+              whileHover={{
+                y: -6,
+                boxShadow: "0 0 0 1px rgb(232 100 27 / 0.5), 0 8px 32px rgb(232 100 27 / 0.12)",
+                transition: { duration: 0.2 },
+              }}
               className="relative flex h-full flex-col gap-4 rounded-2xl border border-border bg-surface-raised/60 p-6"
             >
               <div className="flex items-center gap-3">
@@ -37,9 +70,9 @@ export function ProcessStepsSection() {
               <p className="text-sm leading-relaxed text-muted">
                 {stage.description}
               </p>
-            </li>
+            </motion.li>
           ))}
-        </ol>
+        </motion.ol>
       </SiteContainer>
     </section>
   );
