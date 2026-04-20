@@ -48,6 +48,12 @@ export default function ContactsPage() {
                 href={`tel:${companyInfo.phoneClean}`}
               />
               <ContactLink
+                icon={<Phone size={20} />}
+                label="Телефон (городской)"
+                value={companyInfo.phone2}
+                href={`tel:${companyInfo.phone2Clean}`}
+              />
+              <ContactLink
                 icon={<Mail size={20} />}
                 label="Email"
                 value={companyInfo.email}

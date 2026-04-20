@@ -13,6 +13,7 @@ export function LocalBusinessSchema() {
     email: companyInfo.email,
     address: {
       "@type": "PostalAddress",
+      streetAddress: "ул. Нагорный проезд, д. Аа, к. А",
       addressLocality: companyInfo.city,
       addressRegion: companyInfo.region,
       addressCountry: "RU",

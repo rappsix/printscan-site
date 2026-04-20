@@ -64,6 +64,15 @@ export function SiteFooter() {
               </li>
               <li>
                 <a
+                  href={`tel:${companyInfo.phone2Clean}`}
+                  className="inline-flex items-center gap-2 hover:text-foreground"
+                >
+                  <Phone size={15} />
+                  {companyInfo.phone2}
+                </a>
+              </li>
+              <li>
+                <a
                   href={`mailto:${companyInfo.email}`}
                   className="inline-flex items-center gap-2 hover:text-foreground"
                 >
