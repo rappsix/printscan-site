@@ -16,10 +16,10 @@ type ObjConfig = {
 };
 
 const OBJECTS: ObjConfig[] = [
-  { side: "left",  baseY: -1.0, scrollFactor: 3.5, geometry: "icosahedron", scale: 1.3, speed: [0.05, 0.08] },
-  { side: "left",  baseY:  2.5, scrollFactor: 5.5, geometry: "torus",       scale: 1.1, speed: [0.07, 0.04] },
-  { side: "right", baseY:  1.0, scrollFactor: 4.0, geometry: "octahedron",  scale: 1.2, speed: [0.06, 0.09] },
-  { side: "right", baseY: -2.5, scrollFactor: 2.5, geometry: "sphere",      scale: 1.0, speed: [0.04, 0.07] },
+  { side: "left",  baseY: -1.0, scrollFactor: 10,  geometry: "icosahedron", scale: 1.3, speed: [0.05, 0.08] },
+  { side: "left",  baseY:  2.5, scrollFactor: 16,  geometry: "torus",       scale: 1.1, speed: [0.07, 0.04] },
+  { side: "right", baseY:  1.0, scrollFactor: 13,  geometry: "octahedron",  scale: 1.2, speed: [0.06, 0.09] },
+  { side: "right", baseY: -2.5, scrollFactor: 7,   geometry: "sphere",      scale: 1.0, speed: [0.04, 0.07] },
 ];
 
 function SideObject({ cfg }: { cfg: ObjConfig }) {
@@ -40,7 +40,7 @@ function SideObject({ cfg }: { cfg: ObjConfig }) {
     groupRef.current.position.y = MathUtils.lerp(
       groupRef.current.position.y,
       targetY,
-      delta * 2.5,
+      delta * 5,
     );
 
     groupRef.current.position.x =
