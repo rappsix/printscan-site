@@ -13,7 +13,7 @@ export function FaqSection() {
 
   return (
     <section className="relative overflow-hidden border-t border-border/60 bg-surface/40 py-20 sm:py-28">
-      <div aria-hidden="true" className="pointer-events-none absolute -right-12 top-1/4 h-64 w-64 opacity-[0.13]">
+      <div aria-hidden="true" className="pointer-events-none absolute -right-12 top-1/4 h-64 w-64 opacity-[0.32]">
         <SectionOrb variant="torus" />
       </div>
       <SiteContainer className="max-w-4xl">

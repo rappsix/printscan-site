@@ -12,7 +12,7 @@ import { SectionOrb } from "@/components/ui/section-orb-lazy";
 export function ServicesGridSection() {
   return (
     <section id="services" className="relative overflow-hidden py-20 sm:py-28">
-      <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-80 w-80 opacity-[0.18]">
+      <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-80 w-80 opacity-[0.38]">
         <SectionOrb variant="icosahedron" />
       </div>
 

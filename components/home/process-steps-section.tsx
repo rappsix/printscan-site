@@ -23,7 +23,7 @@ const cardVariants = {
 export function ProcessStepsSection() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-28">
-      <div aria-hidden="true" className="pointer-events-none absolute -bottom-14 -left-14 h-72 w-72 opacity-[0.15]">
+      <div aria-hidden="true" className="pointer-events-none absolute -bottom-14 -left-14 h-72 w-72 opacity-[0.35]">
         <SectionOrb variant="octahedron" />
       </div>
 
