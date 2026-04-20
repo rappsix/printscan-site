@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Cpu, Printer, ScanLine } from "lucide-react";
 import { BrandButton } from "@/components/ui/brand-button";
 import { OpenModalButton } from "@/components/lead-capture/open-modal-button";
@@ -11,6 +12,7 @@ import {
   companyPrinciples,
   equipmentInventory,
 } from "@/content/company-principles";
+import { printerGallery } from "@/content/printer-gallery";
 
 export const metadata: Metadata = {
   title: "О компании",
@@ -25,6 +27,7 @@ export default function AboutPage() {
       <AboutStats />
       <AboutPrinciples />
       <AboutEquipment />
+      <AboutPrinterGallery />
       <AboutCta />
     </>
   );
@@ -164,6 +167,56 @@ function EquipmentIcon({ category }: { category: "printer" | "scanner" | "softwa
   if (category === "printer") return <Printer size={18} />;
   if (category === "scanner") return <ScanLine size={18} />;
   return <Cpu size={18} />;
+}
+
+function AboutPrinterGallery() {
+  return (
+    <section className="border-t border-border/60 bg-surface/40 py-20 sm:py-24">
+      <SiteContainer>
+        <SectionHeading
+          eyebrow="Наш парк"
+          title={
+            <>
+              Принтеры, на которых{" "}
+              <span className="text-brand">мы работаем</span>
+            </>
+          }
+          description="Собственное оборудование — от настольных FDM-станков до фотополимерных принтеров и профессиональных сканеров."
+        />
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+          {printerGallery.map((printer) => (
+            <div
+              key={printer.id}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-surface-raised/50"
+            >
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface">
+                <Image
+                  src={printer.imagePath}
+                  alt={printer.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                {printer.tag && (
+                  <span className="absolute left-3 top-3 rounded-full bg-brand/90 px-2.5 py-0.5 text-xs font-medium text-white backdrop-blur-sm">
+                    {printer.tag}
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col gap-1.5 p-4">
+                <h3 className="text-sm font-semibold text-foreground">
+                  {printer.name}
+                </h3>
+                <p className="text-xs leading-relaxed text-muted">
+                  {printer.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </SiteContainer>
+    </section>
+  );
 }
 
 function AboutCta() {

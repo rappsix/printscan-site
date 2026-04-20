@@ -18,6 +18,7 @@ export interface ServiceEntry {
   deliveryHint: string;
   priceHint: string;
   icon: "printer" | "scan" | "wrench" | "cube" | "home" | "sparkles";
+  image?: string;
 }
 
 export const servicesCatalog: ServiceEntry[] = [
@@ -48,6 +49,7 @@ export const servicesCatalog: ServiceEntry[] = [
     deliveryHint: "от 1 рабочего дня",
     priceHint: "уточните по запросу",
     icon: "printer",
+    image: "/services/3d-print.jpg",
   },
   {
     slug: "3d-scan",
@@ -65,6 +67,7 @@ export const servicesCatalog: ServiceEntry[] = [
     deliveryHint: "от 1 дня",
     priceHint: "уточните по запросу",
     icon: "scan",
+    image: "/services/3d-scan.jpg",
   },
   {
     slug: "reverse-engineering",
@@ -82,6 +85,7 @@ export const servicesCatalog: ServiceEntry[] = [
     deliveryHint: "от 3 дней",
     priceHint: "уточните по запросу",
     icon: "wrench",
+    image: "/services/reverse-engineering.jpg",
   },
   {
     slug: "3d-modeling",
@@ -99,6 +103,7 @@ export const servicesCatalog: ServiceEntry[] = [
     deliveryHint: "от 2 дней",
     priceHint: "уточните по запросу",
     icon: "cube",
+    image: "/services/3d-modeling.jpg",
   },
   {
     slug: "mockups",
@@ -116,6 +121,7 @@ export const servicesCatalog: ServiceEntry[] = [
     deliveryHint: "от 2 недель",
     priceHint: "уточните по запросу",
     icon: "home",
+    image: "/services/mockups.jpg",
   },
   {
     slug: "post-processing",
@@ -133,6 +139,7 @@ export const servicesCatalog: ServiceEntry[] = [
     deliveryHint: "от 1 дня",
     priceHint: "уточните по запросу",
     icon: "sparkles",
+    image: "/services/post-processing.jpg",
   },
 ];
 

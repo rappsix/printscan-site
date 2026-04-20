@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { ServiceIcon } from "@/components/icons/service-icon";
@@ -64,7 +65,22 @@ function ServiceHero({ service }: { service: ServiceEntry }) {
               </BrandButton>
             </div>
           </div>
-          <ServiceMetaCard service={service} />
+          <div className="flex flex-col gap-5">
+            {service.image ? (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-surface/60 via-transparent to-transparent" />
+              </div>
+            ) : null}
+            <ServiceMetaCard service={service} />
+          </div>
         </div>
       </SiteContainer>
     </section>
