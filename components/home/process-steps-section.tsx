@@ -16,11 +16,7 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 32 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0 },
 };
 
 export function ProcessStepsSection() {
@@ -50,6 +46,7 @@ export function ProcessStepsSection() {
             <motion.li
               key={stage.number}
               variants={cardVariants}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               whileHover={{
                 y: -6,
                 boxShadow: "0 0 0 1px rgb(232 100 27 / 0.5), 0 8px 32px rgb(232 100 27 / 0.12)",
