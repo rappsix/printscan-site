@@ -194,13 +194,22 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           </div>
 
           <div className="flex flex-col gap-2">
-            <a
-              href={`tel:${companyInfo.phoneClean}`}
-              className="flex items-center gap-3 rounded-xl border border-border bg-surface-raised/60 px-4 py-2.5 text-sm transition-colors hover:border-brand/50 hover:bg-surface-raised"
-            >
-              <Phone size={15} className="shrink-0 text-brand" />
-              <span className="font-medium">{companyInfo.phone}</span>
-            </a>
+            <div className="flex gap-2">
+              <a
+                href={`tel:${companyInfo.phoneClean}`}
+                className="flex flex-1 items-center gap-2 rounded-xl border border-border bg-surface-raised/60 px-4 py-2.5 text-sm transition-colors hover:border-brand/50 hover:bg-surface-raised"
+              >
+                <Phone size={15} className="shrink-0 text-brand" />
+                <span className="font-medium">{companyInfo.phone}</span>
+              </a>
+              <a
+                href={`tel:${companyInfo.phone2Clean}`}
+                className="flex flex-1 items-center gap-2 rounded-xl border border-border bg-surface-raised/60 px-4 py-2.5 text-sm transition-colors hover:border-brand/50 hover:bg-surface-raised"
+              >
+                <Phone size={15} className="shrink-0 text-brand" />
+                <span className="font-medium">{companyInfo.phone2}</span>
+              </a>
+            </div>
             <div className="flex gap-2">
               <a
                 href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(companyInfo.whatsappGreeting)}`}
