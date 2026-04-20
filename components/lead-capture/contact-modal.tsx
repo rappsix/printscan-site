@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle, Loader2, X } from "lucide-react";
+import { CheckCircle, Loader2, MessageCircle, Phone, Send, X } from "lucide-react";
 import { contactLeadSchema, type ContactLead } from "@/lib/lead-capture/schema";
 import { cn } from "@/lib/class-merger";
+import { companyInfo } from "@/content/company-info";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -185,6 +186,42 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               "Отправить заявку"
             )}
           </button>
+
+          <div className="relative flex items-center gap-3 py-1">
+            <div className="h-px flex-1 bg-border" />
+            <span className="text-xs text-subtle">или свяжитесь сами</span>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <a
+              href={`tel:${companyInfo.phoneClean}`}
+              className="flex items-center gap-3 rounded-xl border border-border bg-surface-raised/60 px-4 py-2.5 text-sm transition-colors hover:border-brand/50 hover:bg-surface-raised"
+            >
+              <Phone size={15} className="shrink-0 text-brand" />
+              <span className="font-medium">{companyInfo.phone}</span>
+            </a>
+            <div className="flex gap-2">
+              <a
+                href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(companyInfo.whatsappGreeting)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-surface-raised/60 px-4 py-2.5 text-sm transition-colors hover:border-brand/50 hover:bg-surface-raised"
+              >
+                <MessageCircle size={15} className="shrink-0 text-brand" />
+                <span className="font-medium">WhatsApp</span>
+              </a>
+              <a
+                href={`https://t.me/${companyInfo.telegram}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-surface-raised/60 px-4 py-2.5 text-sm transition-colors hover:border-brand/50 hover:bg-surface-raised"
+              >
+                <Send size={15} className="shrink-0 text-brand" />
+                <span className="font-medium">Telegram</span>
+              </a>
+            </div>
+          </div>
         </form>
       )}
     </dialog>
