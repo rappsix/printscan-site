@@ -7,10 +7,15 @@ import { ServiceIcon } from "@/components/icons/service-icon";
 import { TiltCard } from "@/components/ui/tilt-card";
 import { RippleCard } from "@/components/ui/ripple-card";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { SectionOrb } from "@/components/ui/section-orb-lazy";
 
 export function ServicesGridSection() {
   return (
-    <section id="services" className="relative py-20 sm:py-28">
+    <section id="services" className="relative overflow-hidden py-20 sm:py-28">
+      <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-80 w-80 opacity-[0.18]">
+        <SectionOrb variant="icosahedron" />
+      </div>
+
       <SiteContainer>
         <ScrollReveal>
           <SectionHeading

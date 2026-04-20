@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { processStages } from "@/content/process-stages";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SiteContainer } from "@/components/ui/site-container";
+import { SectionOrb } from "@/components/ui/section-orb-lazy";
 
 const containerVariants = {
   hidden: {},
@@ -21,7 +22,11 @@ const cardVariants = {
 
 export function ProcessStepsSection() {
   return (
-    <section className="relative py-20 sm:py-28">
+    <section className="relative overflow-hidden py-20 sm:py-28">
+      <div aria-hidden="true" className="pointer-events-none absolute -bottom-14 -left-14 h-72 w-72 opacity-[0.15]">
+        <SectionOrb variant="octahedron" />
+      </div>
+
       <SiteContainer>
         <SectionHeading
           eyebrow="Как мы работаем"
