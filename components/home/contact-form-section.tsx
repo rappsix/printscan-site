@@ -73,8 +73,36 @@ function buildChannels(): ContactChannel[] {
   ];
 }
 
+function ChannelCard({ channel }: { channel: ContactChannel }) {
+  return (
+    <a
+      href={channel.href}
+      target={channel.external ? "_blank" : undefined}
+      rel={channel.external ? "noopener noreferrer" : undefined}
+      className="group flex items-center gap-4 rounded-2xl border border-border bg-surface-raised/60 px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-brand/60 hover:bg-surface-raised"
+    >
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand transition-colors group-hover:bg-brand group-hover:text-background">
+        {channel.icon}
+      </span>
+      <span className="flex flex-col gap-0.5">
+        <span className="text-xs uppercase tracking-[0.14em] text-subtle">
+          {channel.label}
+        </span>
+        <span className="font-medium text-foreground">
+          {channel.value}
+        </span>
+      </span>
+      <span className="ml-auto text-xs text-brand opacity-0 transition-opacity group-hover:opacity-100">
+        {channel.cta} →
+      </span>
+    </a>
+  );
+}
+
 export function ContactFormSection() {
   const channels = buildChannels();
+  const mainChannels = channels.slice(0, -1);
+  const addressChannel = channels[channels.length - 1];
 
   return (
     <section
@@ -95,30 +123,15 @@ export function ContactFormSection() {
         />
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          {channels.map((channel) => (
-            <a
-              key={channel.label}
-              href={channel.href}
-              target={channel.external ? "_blank" : undefined}
-              rel={channel.external ? "noopener noreferrer" : undefined}
-              className="group flex items-center gap-4 rounded-2xl border border-border bg-surface-raised/60 px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-brand/60 hover:bg-surface-raised"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand transition-colors group-hover:bg-brand group-hover:text-background">
-                {channel.icon}
-              </span>
-              <span className="flex flex-col gap-0.5">
-                <span className="text-xs uppercase tracking-[0.14em] text-subtle">
-                  {channel.label}
-                </span>
-                <span className="font-medium text-foreground">
-                  {channel.value}
-                </span>
-              </span>
-              <span className="ml-auto text-xs text-brand opacity-0 transition-opacity group-hover:opacity-100">
-                {channel.cta} →
-              </span>
-            </a>
+          {mainChannels.map((channel) => (
+            <ChannelCard key={channel.label} channel={channel} />
           ))}
+        </div>
+
+        <div className="mt-4 flex justify-center">
+          <div className="w-full sm:w-[calc(50%-8px)]">
+            <ChannelCard channel={addressChannel} />
+          </div>
         </div>
 
         <p className="mt-8 text-center text-sm text-subtle">
