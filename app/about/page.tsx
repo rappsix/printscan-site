@@ -184,12 +184,20 @@ function AboutCta() {
               Смотреть портфолио <ArrowRight size={16} />
             </BrandButton>
           </div>
-          <Link
-            href={`tel:${companyInfo.phoneClean}`}
-            className="text-sm text-brand hover:text-brand-hover"
-          >
-            {companyInfo.phone}
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href={`tel:${companyInfo.phoneClean}`}
+              className="text-sm text-brand hover:text-brand-hover"
+            >
+              {companyInfo.phone}
+            </Link>
+            <Link
+              href={`tel:${companyInfo.phone2Clean}`}
+              className="text-sm text-brand hover:text-brand-hover"
+            >
+              {companyInfo.phone2}
+            </Link>
+          </div>
         </div>
       </SiteContainer>
     </section>

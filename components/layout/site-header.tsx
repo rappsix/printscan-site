@@ -44,13 +44,22 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href={`tel:${companyInfo.phoneClean}`}
-            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
-          >
-            <Phone size={16} />
-            {companyInfo.phone}
-          </a>
+          <div className="flex flex-col items-end gap-0.5">
+            <a
+              href={`tel:${companyInfo.phoneClean}`}
+              className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+            >
+              <Phone size={16} />
+              {companyInfo.phone}
+            </a>
+            <a
+              href={`tel:${companyInfo.phone2Clean}`}
+              className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+            >
+              <Phone size={16} />
+              {companyInfo.phone2}
+            </a>
+          </div>
           <BrandButton as="button" onClick={openModal} variant="primary" className="py-2 text-sm">
             Оставить заявку
           </BrandButton>
@@ -90,6 +99,13 @@ export function SiteHeader() {
             >
               <Phone size={16} />
               {companyInfo.phone}
+            </a>
+            <a
+              href={`tel:${companyInfo.phone2Clean}`}
+              className="inline-flex items-center gap-2 text-sm text-muted"
+            >
+              <Phone size={16} />
+              {companyInfo.phone2}
             </a>
             <BrandButton as="button" onClick={openModal} className="w-full py-2 text-sm">
               Оставить заявку

@@ -23,6 +23,14 @@ function buildChannels(): ContactChannel[] {
       cta: "Позвонить",
     },
     {
+      label: "Телефон (городской)",
+      value: companyInfo.phone2,
+      href: `tel:${companyInfo.phone2Clean}`,
+      icon: <Phone size={20} />,
+      external: false,
+      cta: "Позвонить",
+    },
+    {
       label: "WhatsApp",
       value: "Написать в WhatsApp",
       href: `https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(companyInfo.whatsappGreeting)}`,
