@@ -39,20 +39,20 @@ export function HeroSection() {
         <div className="flex min-h-[88svh] flex-col justify-end gap-7 pb-10 lg:min-h-0 lg:justify-center lg:pb-0">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border-bright bg-surface-raised/60 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.22em] text-brand">
             <Sparkles size={14} />
-            B2B · с {companyInfo.founded} года
+            Пенза · с {companyInfo.founded} года
           </span>
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             <TextScramble text="3D-печать, сканирование " delay={200} duration={1200} />
             <span className="text-brand">
-              <TextScramble text="и макетирование" delay={900} duration={1000} />
+              <TextScramble text="и моделирование" delay={900} duration={1000} />
             </span>
             <br className="hidden sm:block" />
-            <TextScramble text="для бизнеса в Пензе" delay={1500} duration={1000} />
+            <TextScramble text="в Пензе" delay={1500} duration={1000} />
           </h1>
           <p className="max-w-xl text-lg text-muted sm:text-xl">
-            Работаем с юрлицами и ИП: пластики под задачу, точные сканы
-            промышленным оборудованием, макеты и реверс-инжиниринг. Выезд по
-            Пензе и области.
+            Собственный парк FDM и SLA принтеров. Работаем с широким выбором
+            пластиков: PLA, PETG, ABS, ASA, TPU, нейлон, поликарбонат и другие.
+            Сканирование, реверс-инжиниринг, моделирование по фото и архитектурные макеты.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <MagneticWrapper>
@@ -68,16 +68,16 @@ export function HeroSection() {
           </div>
           <dl className="mt-4 grid grid-cols-3 gap-5 border-t border-border/60 pt-6 text-sm">
             <div>
-              <dt className="text-muted">Материалов</dt>
-              <dd className="text-xl font-semibold text-foreground">15+</dd>
-            </div>
-            <div>
               <dt className="text-muted">Проектов</dt>
               <dd className="text-xl font-semibold text-foreground">500+</dd>
             </div>
             <div>
-              <dt className="text-muted">Выезд</dt>
-              <dd className="text-xl font-semibold text-foreground">58 рег.</dd>
+              <dt className="text-muted">С 2018 года</dt>
+              <dd className="text-xl font-semibold text-foreground">8 лет</dd>
+            </div>
+            <div>
+              <dt className="text-muted">Срок от</dt>
+              <dd className="text-xl font-semibold text-foreground">1 дня</dd>
             </div>
           </dl>
         </div>

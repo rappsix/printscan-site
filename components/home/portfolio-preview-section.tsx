@@ -19,10 +19,10 @@ export function PortfolioPreviewSection() {
               eyebrow="Портфолио"
               title={
                 <>
-                  Некоторые из <span className="text-brand">наших работ</span>
+                  Наши <span className="text-brand">работы</span>
                 </>
               }
-              description="Кейсы по 3D-печати, сканированию, реверс-инжинирингу и макетированию."
+              description="3D-печать, сканирование, реверс-инжиниринг, моделирование и макеты."
             />
             <Link
               href="/portfolio"

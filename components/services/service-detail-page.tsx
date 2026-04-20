@@ -165,7 +165,7 @@ function ServiceRelatedProjects({
           eyebrow="Примеры работ"
           title={
             <>
-              Кейсы по этой <span className="text-brand">услуге</span>
+              Работы по этой <span className="text-brand">услуге</span>
             </>
           }
         />

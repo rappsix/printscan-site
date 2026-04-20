@@ -98,10 +98,10 @@ export default function ContactsPage() {
             </div>
 
             <div className="rounded-2xl border border-border bg-surface-raised/40 p-6 text-sm text-muted">
-              <p className="font-medium text-foreground">Работа с юрлицами</p>
+              <p className="font-medium text-foreground">Оплата и документы</p>
               <p className="mt-2">
-                Оформляем договор, счёт и закрывающие документы. Работаем по
-                безналу, принимаем оплату по СБП.
+                Принимаем наличные и безналичный расчёт. Для юридических лиц и
+                ИП — договор, счёт и закрывающие документы.
               </p>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, Phone, Send, Users } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, Send, Users } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SiteContainer } from "@/components/ui/site-container";
 import { companyInfo } from "@/content/company-info";
@@ -61,6 +61,14 @@ function buildChannels(): ContactChannel[] {
       icon: <Users size={20} />,
       external: true,
       cta: "Открыть",
+    },
+    {
+      label: "Адрес",
+      value: companyInfo.address,
+      href: `https://yandex.ru/maps/?text=${encodeURIComponent(companyInfo.address)}`,
+      icon: <MapPin size={20} />,
+      external: true,
+      cta: "Маршрут",
     },
   ];
 }

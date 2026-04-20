@@ -17,8 +17,8 @@ export function ServicesGridSection() {
             eyebrow="Что мы делаем"
             title={
               <>
-                Комплекс 3D-услуг{" "}
-                <span className="text-brand">под задачи бизнеса</span>
+                Полный цикл{" "}
+                <span className="text-brand">3D-услуг</span>
               </>
             }
             description="От быстрой печати прототипов до архитектурных макетов и
