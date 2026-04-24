@@ -15,7 +15,7 @@ export const companyInfo = {
   whatsapp: "79374441545",
   telegram: "autohouse58",
   vk: "id466666186",
-  address: "г. Пенза, ул. Нагорный проезд, д. Аа, к. А",
+  address: "г. Пенза, ул Нагорный проезд 2а, к А",
   workingHours: "Пн–Пт 9:00–19:00",
   whatsappGreeting:
     "Здравствуйте! Хочу обсудить заказ 3D-печати / сканирования",
