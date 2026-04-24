@@ -34,7 +34,7 @@ export const portfolioProjects: PortfolioProject[] = [
     quantity: "120 шт",
     material: "PETG",
     leadTime: "9 рабочих дней",
-    coverImage: "/portfolio/placeholder-1.svg",
+    coverImage: "/portfolio/industrial-housings-petg.jpg",
     highlights: [
       "Подготовили модель под оптимальный набор слоёв",
       "Контроль геометрии на каждой партии",
@@ -50,7 +50,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Выезд на производство, сканирование редуктора без демонтажа, получение STL-модели для проектирования замены.",
     year: 2025,
     leadTime: "2 дня",
-    coverImage: "/portfolio/placeholder-2.svg",
+    coverImage: "/portfolio/scan-industrial-gearbox.jpg",
     highlights: [
       "Сканирование на месте без остановки производства",
       "Очистка и объединение сканов в студии",
@@ -66,7 +66,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Сняли с производства деталь — восстановили геометрию, построили параметрическую модель, выдали чертежи для литья.",
     year: 2024,
     leadTime: "10 дней",
-    coverImage: "/portfolio/placeholder-3.svg",
+    coverImage: "/portfolio/reverse-pump-housing.jpg",
     highlights: [
       "Сканирование + ручной обмер критичных посадок",
       "Параметрическая 3D-модель в SolidWorks",
@@ -82,7 +82,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Презентационный макет с подсветкой для застройщика: корпуса напечатаны на FDM, ландшафт комбинированный.",
     year: 2025,
     leadTime: "4 недели",
-    coverImage: "/portfolio/placeholder-4.svg",
+    coverImage: "/portfolio/arch-mockup-residential.jpg",
     highlights: [
       "Встроенная подсветка жилых корпусов",
       "Точное соответствие генплану",
@@ -98,7 +98,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Создали 3D-модель персонажа по 24 фотографиям заказчика, напечатали на фотополимере, покрасили вручную.",
     year: 2025,
     leadTime: "6 дней",
-    coverImage: "/portfolio/placeholder-5.svg",
+    coverImage: "/portfolio/photo-to-3d-figurine.jpg",
     highlights: [
       "Скульптинг в ZBrush с сохранением сходства",
       "SLA-печать 50 микрон",
@@ -115,7 +115,7 @@ export const portfolioProjects: PortfolioProject[] = [
     year: 2024,
     quantity: "18 шт",
     leadTime: "8 дней",
-    coverImage: "/portfolio/placeholder-6.svg",
+    coverImage: "/portfolio/post-processing-painted-props.jpg",
     highlights: [
       "Полное скрытие слоёв печати",
       "Эффект состаренного металла",
