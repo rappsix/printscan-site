@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/class-merger";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -74,10 +75,16 @@ export default function PortfolioPage() {
                 href={`/portfolio/${project.slug}`}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface-raised/60 transition-all hover:-translate-y-1 hover:border-brand/60"
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-surface-raised to-border-bright">
-                  <div className="grid h-full w-full place-items-center text-sm text-subtle">
-                    {project.categoryLabel}
-                  </div>
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-surface-raised to-border-bright">
+                  {project.coverImage && (
+                    <Image
+                      src={project.coverImage}
+                      alt={project.title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
                 </div>
                 <div className="flex flex-col gap-3 p-6">
                   <span className="text-xs uppercase tracking-[0.18em] text-brand">
