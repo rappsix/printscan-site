@@ -18,6 +18,7 @@ export interface PortfolioProject {
   material?: string;
   leadTime?: string;
   coverImage: string;
+  imageObjectPosition?: string;
   highlights: string[];
 }
 
@@ -99,6 +100,7 @@ export const portfolioProjects: PortfolioProject[] = [
     year: 2025,
     leadTime: "6 дней",
     coverImage: "/portfolio/photo-to-3d-figurine.jpg",
+    imageObjectPosition: "top",
     highlights: [
       "Скульптинг в ZBrush с сохранением сходства",
       "SLA-печать 50 микрон",
