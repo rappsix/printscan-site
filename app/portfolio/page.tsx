@@ -75,14 +75,14 @@ export default function PortfolioPage() {
                 href={`/portfolio/${project.slug}`}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface-raised/60 transition-all hover:-translate-y-1 hover:border-brand/60"
               >
-                <div className={`relative w-full overflow-hidden ${project.imageFit === "contain" ? "aspect-[3/4] bg-zinc-950" : "aspect-[4/3] bg-gradient-to-br from-surface-raised to-border-bright"}`}>
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-surface-raised to-border-bright">
                   {project.coverImage && (
                     <Image
                       src={project.coverImage}
                       alt={project.title}
                       fill
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className={`${project.imageFit === "contain" ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       style={{ objectPosition: project.imageObjectPosition ?? "center" }}
                     />
                   )}

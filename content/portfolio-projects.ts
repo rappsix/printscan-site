@@ -101,7 +101,6 @@ export const portfolioProjects: PortfolioProject[] = [
     year: 2025,
     leadTime: "6 дней",
     coverImage: "/portfolio/photo-to-3d-figurine.jpg",
-    imageFit: "contain",
     highlights: [
       "Скульптинг в ZBrush с сохранением сходства",
       "SLA-печать 50 микрон",
