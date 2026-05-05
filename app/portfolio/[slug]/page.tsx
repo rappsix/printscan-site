@@ -46,20 +46,31 @@ export default async function ProjectPage({ params }: ProjectPageParams) {
       <section className="relative border-b border-border/60 bg-surface/40 py-20 sm:py-24">
         <div className="absolute inset-0 grid-bg opacity-40" />
         <SiteContainer className="relative">
-          <div className="flex flex-col gap-6">
-            <Link
-              href="/portfolio"
-              className="text-xs uppercase tracking-[0.18em] text-subtle hover:text-brand"
-            >
-              ← Портфолио
-            </Link>
-            <span className="text-xs uppercase tracking-[0.18em] text-brand">
-              {project.categoryLabel} · {project.year}
-            </span>
-            <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
-              {project.title}
-            </h1>
-            <p className="max-w-3xl text-lg text-muted">{project.summary}</p>
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+            <div className="flex flex-col gap-6">
+              <Link
+                href="/portfolio"
+                className="text-xs uppercase tracking-[0.18em] text-subtle hover:text-brand"
+              >
+                ← Портфолио
+              </Link>
+              <span className="text-xs uppercase tracking-[0.18em] text-brand">
+                {project.categoryLabel} · {project.year}
+              </span>
+              <h1 className="text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
+                {project.title}
+              </h1>
+              <p className="text-lg text-muted">{project.summary}</p>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-border">
+              <Image
+                src={project.coverImage}
+                alt={project.title}
+                width={800}
+                height={600}
+                className="h-72 w-full object-cover sm:h-96"
+              />
+            </div>
           </div>
         </SiteContainer>
       </section>
@@ -86,18 +97,7 @@ export default async function ProjectPage({ params }: ProjectPageParams) {
                 ))}
               </ul>
             </div>
-            <div className="flex flex-col gap-6">
-              <div className="overflow-hidden rounded-2xl border border-border">
-                <Image
-                  src={project.coverImage}
-                  alt={project.title}
-                  width={800}
-                  height={600}
-                  className="h-64 w-full object-cover sm:h-80"
-                />
-              </div>
-              <ProjectSpecs project={project} />
-            </div>
+            <ProjectSpecs project={project} />
           </div>
         </SiteContainer>
       </section>
