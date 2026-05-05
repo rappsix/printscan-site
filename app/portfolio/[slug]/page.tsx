@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
@@ -85,7 +86,18 @@ export default async function ProjectPage({ params }: ProjectPageParams) {
                 ))}
               </ul>
             </div>
-            <ProjectSpecs project={project} />
+            <div className="flex flex-col gap-6">
+              <div className="overflow-hidden rounded-2xl border border-border">
+                <Image
+                  src={project.coverImage}
+                  alt={project.title}
+                  width={800}
+                  height={600}
+                  className="h-64 w-full object-cover sm:h-80"
+                />
+              </div>
+              <ProjectSpecs project={project} />
+            </div>
           </div>
         </SiteContainer>
       </section>
