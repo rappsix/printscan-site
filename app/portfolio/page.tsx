@@ -75,7 +75,7 @@ export default function PortfolioPage() {
                 href={`/portfolio/${project.slug}`}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface-raised/60 transition-all hover:-translate-y-1 hover:border-brand/60"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-surface-raised to-border-bright">
+                <div className={`relative w-full overflow-hidden ${project.imageFit === "contain" ? "aspect-[3/4] bg-zinc-950" : "aspect-[4/3] bg-gradient-to-br from-surface-raised to-border-bright"}`}>
                   {project.coverImage && (
                     <Image
                       src={project.coverImage}

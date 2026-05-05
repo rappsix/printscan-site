@@ -62,13 +62,13 @@ export default async function ProjectPage({ params }: ProjectPageParams) {
               </h1>
               <p className="text-lg text-muted">{project.summary}</p>
             </div>
-            <div className="overflow-hidden rounded-2xl border border-border">
+            <div className={`overflow-hidden rounded-2xl border border-border ${project.imageFit === "contain" ? "bg-zinc-950" : ""}`}>
               <Image
                 src={project.coverImage}
                 alt={project.title}
                 width={800}
                 height={600}
-                className={`h-72 w-full sm:h-96 ${project.imageFit === "contain" ? "object-contain" : "object-cover"}`}
+                className={`w-full ${project.imageFit === "contain" ? "h-auto max-h-[480px] object-contain" : "h-72 object-cover sm:h-96"}`}
                 style={{ objectPosition: project.imageObjectPosition ?? "center" }}
               />
             </div>
