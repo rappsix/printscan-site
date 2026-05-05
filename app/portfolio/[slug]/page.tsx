@@ -68,7 +68,7 @@ export default async function ProjectPage({ params }: ProjectPageParams) {
                 alt={project.title}
                 width={800}
                 height={600}
-                className="h-72 w-full object-cover sm:h-96"
+                className={`h-72 w-full sm:h-96 ${project.imageFit === "contain" ? "object-contain" : "object-cover"}`}
                 style={{ objectPosition: project.imageObjectPosition ?? "center" }}
               />
             </div>
