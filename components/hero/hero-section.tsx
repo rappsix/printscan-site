@@ -42,15 +42,16 @@ export function HeroSection() {
             Пенза · с {companyInfo.founded} года
           </span>
           <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
-            <TextScramble text="3Д сканирование" delay={200} duration={1200} />
-            <br />
-            <span className="text-brand">
+            <span className="block whitespace-nowrap">
+              <TextScramble text="3Д сканирование" delay={200} duration={1200} />
+            </span>
+            <span className="block whitespace-nowrap text-brand">
               <TextScramble text="3Д печать" delay={900} duration={1000} />
             </span>
-            <br />
-            <TextScramble text="3Д моделирование" delay={1500} duration={1000} />
-            <br />
-            <span className="text-brand">
+            <span className="block whitespace-nowrap">
+              <TextScramble text="3Д моделирование" delay={1500} duration={1000} />
+            </span>
+            <span className="block whitespace-nowrap text-brand">
               <TextScramble text="в Пензе" delay={2100} duration={800} />
             </span>
           </h1>
