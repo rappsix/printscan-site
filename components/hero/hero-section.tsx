@@ -41,13 +41,18 @@ export function HeroSection() {
             <Sparkles size={14} />
             Пенза · с {companyInfo.founded} года
           </span>
-          <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-            <TextScramble text="3D-печать, сканирование " delay={200} duration={1200} />
+          <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
+            <TextScramble text="3Д сканирование" delay={200} duration={1200} />
+            <br />
             <span className="text-brand">
-              <TextScramble text="и моделирование" delay={900} duration={1000} />
+              <TextScramble text="3Д печать" delay={900} duration={1000} />
             </span>
-            <br className="hidden sm:block" />
-            <TextScramble text="в Пензе" delay={1500} duration={1000} />
+            <br />
+            <TextScramble text="3Д моделирование" delay={1500} duration={1000} />
+            <br />
+            <span className="text-brand">
+              <TextScramble text="в Пензе" delay={2100} duration={800} />
+            </span>
           </h1>
           <p className="max-w-xl text-lg text-muted sm:text-xl">
             Собственный парк FDM и SLA принтеров. Работаем с широким выбором
