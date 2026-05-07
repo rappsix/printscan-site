@@ -75,7 +75,7 @@ export function ScrollSideScene() {
           dpr={[1, 1.5]}
           gl={{ antialias: false, alpha: true, powerPreference: "low-power" }}
           performance={{ min: 0.5 }}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", pointerEvents: "none" }}
         >
           <AdaptiveDpr pixelated />
           {/* far layer — slow, tiny */}
