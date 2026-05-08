@@ -13,6 +13,16 @@ interface ServiceDetailPageProps {
 }
 
 export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
+  if (service.slug === "3d-print") {
+    return (
+      <>
+        <ServiceHero service={service} />
+        <PrintPlastics />
+        <ServiceCta />
+      </>
+    );
+  }
+
   const relatedProjects = portfolioProjects
     .filter((project) => project.category === service.slug)
     .slice(0, 3);
@@ -200,6 +210,46 @@ function ServiceRelatedProjects({
   );
 }
 
+
+const PLASTICS = [
+  { name: "PLA", use: "Прототипы, макеты, декор. Лёгок в печати, хорошая детализация, не требует нагревательной камеры." },
+  { name: "PETG", use: "Функциональные детали, ёмкости, корпуса. Прочный, влагостойкий, слабо воняет при печати." },
+  { name: "ABS", use: "Нагруженные детали, корпуса под обработку. Термостойкий, легко шлифуется и склеивается." },
+  { name: "ASA", use: "Уличные изделия и кронштейны. Как ABS, но устойчив к UV-излучению и перепадам температур." },
+  { name: "TPU", use: "Гибкие детали: прокладки, чехлы, демпферы, уплотнители. Хорошо гнётся, не ломается." },
+  { name: "Нейлон", use: "Шестерни, втулки, направляющие. Износостоек, скользкий, выдерживает ударные нагрузки." },
+  { name: "Поликарбонат", use: "Высоконагруженные и термостойкие детали. Очень прочный, выдерживает до 110–120 °C." },
+];
+
+function PrintPlastics() {
+  return (
+    <section className="py-20 sm:py-24">
+      <SiteContainer>
+        <SectionHeading
+          eyebrow="Материалы"
+          title={
+            <>
+              Пластики, с которыми{" "}
+              <span className="text-brand">работаем</span>
+            </>
+          }
+          description="Подбираем материал под задачу — по прочности, термостойкости, гибкости или требованиям к внешнему виду."
+        />
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {PLASTICS.map((p) => (
+            <div
+              key={p.name}
+              className="flex flex-col gap-2 rounded-2xl border border-border bg-surface-raised/40 p-5"
+            >
+              <span className="text-base font-semibold text-brand">{p.name}</span>
+              <p className="text-sm leading-relaxed text-muted">{p.use}</p>
+            </div>
+          ))}
+        </div>
+      </SiteContainer>
+    </section>
+  );
+}
 
 function ServiceCta() {
   return (
