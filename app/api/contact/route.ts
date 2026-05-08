@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { contactLeadSchema } from "@/lib/lead-capture/schema";
-import { sendLeadToTelegram } from "@/lib/lead-capture/telegram-notifier";
+import { sendLeadByEmail } from "@/lib/lead-capture/email-notifier";
 
 export async function POST(request: NextRequest) {
   let body: unknown;
@@ -22,10 +22,10 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    await sendLeadToTelegram({ name, phone, message });
+    await sendLeadByEmail({ name, phone, message });
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("[contact] Telegram send failed:", err instanceof Error ? err.message : err);
+    console.error("[contact] Email send failed:", err instanceof Error ? err.message : err);
     return NextResponse.json({ error: "Не удалось отправить заявку" }, { status: 500 });
   }
 }

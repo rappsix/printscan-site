@@ -51,9 +51,6 @@ export function HeroSection() {
             <span className="block whitespace-nowrap">
               <TextScramble text="3Д моделирование" delay={1500} duration={1000} />
             </span>
-            <span className="block whitespace-nowrap text-brand">
-              <TextScramble text="в Пензе" delay={2100} duration={800} />
-            </span>
           </h1>
           <p className="max-w-xl text-lg text-muted sm:text-xl">
             Собственный парк FDM и SLA принтеров. Работаем с широким выбором
