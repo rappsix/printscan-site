@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { ServiceIcon } from "@/components/icons/service-icon";
-import { BrandButton } from "@/components/ui/brand-button";
 import { OpenModalButton } from "@/components/lead-capture/open-modal-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SiteContainer } from "@/components/ui/site-container";
@@ -57,9 +56,6 @@ function ServiceHero({ service }: { service: ServiceEntry }) {
               <OpenModalButton>
                 Оставить заявку <ArrowRight size={16} />
               </OpenModalButton>
-              <BrandButton href="/portfolio" variant="outline">
-                Примеры работ
-              </BrandButton>
             </div>
           </div>
           <div className="flex flex-col gap-5">
