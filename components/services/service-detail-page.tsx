@@ -7,7 +7,7 @@ import { OpenModalButton } from "@/components/lead-capture/open-modal-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SiteContainer } from "@/components/ui/site-container";
 import { portfolioProjects } from "@/content/portfolio-projects";
-import { servicesCatalog, type ServiceEntry } from "@/content/services-catalog";
+import { type ServiceEntry } from "@/content/services-catalog";
 
 interface ServiceDetailPageProps {
   service: ServiceEntry;
@@ -17,8 +17,6 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
   const relatedProjects = portfolioProjects
     .filter((project) => project.category === service.slug)
     .slice(0, 3);
-  const otherServices = servicesCatalog.filter((item) => item.slug !== service.slug);
-
   return (
     <>
       <ServiceHero service={service} />
@@ -27,7 +25,6 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       {relatedProjects.length > 0 ? (
         <ServiceRelatedProjects projects={relatedProjects} />
       ) : null}
-      <ServiceOtherServices services={otherServices} />
       <ServiceCta />
     </>
   );
@@ -207,43 +204,6 @@ function ServiceRelatedProjects({
   );
 }
 
-function ServiceOtherServices({
-  services,
-}: {
-  services: ServiceEntry[];
-}) {
-  return (
-    <section className="border-t border-border/60 bg-surface/40 py-20 sm:py-24">
-      <SiteContainer>
-        <SectionHeading
-          eyebrow="Другие услуги"
-          title={
-            <>
-              Можем <span className="text-brand">ещё</span>
-            </>
-          }
-        />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((item) => (
-            <Link
-              key={item.slug}
-              href={`/services/${item.slug}`}
-              className="group flex flex-col gap-3 rounded-2xl border border-border bg-surface-raised/60 p-6 transition-colors hover:border-brand/60"
-            >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-soft text-brand">
-                <ServiceIcon name={item.icon} size={18} />
-              </span>
-              <h3 className="text-lg font-semibold text-foreground group-hover:text-brand">
-                {item.shortTitle}
-              </h3>
-              <p className="text-sm text-muted">{item.tagline}</p>
-            </Link>
-          ))}
-        </div>
-      </SiteContainer>
-    </section>
-  );
-}
 
 function ServiceCta() {
   return (
