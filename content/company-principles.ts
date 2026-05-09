@@ -34,10 +34,10 @@ export interface EquipmentItem {
 
 export const equipmentInventory: EquipmentItem[] = [
   {
-    name: "Парк FDM-принтеров",
+    name: "FDM-принтеры: Creality, Bambu Lab, Elegoo Neptune 4 Max",
     category: "printer",
     description:
-      "Принтеры с рабочим полем до 300×300×400 мм для крупных деталей и мелкой серии.",
+      "Рабочее поле до 430×430×480 мм. Печать крупных деталей, корпусов, макетов и серий. Поддержка PLA, PETG, ABS, ASA, TPU, PA, CF.",
   },
   {
     name: "Фотополимерные SLA/LCD принтеры",
@@ -52,9 +52,9 @@ export const equipmentInventory: EquipmentItem[] = [
       "Профессиональные сканеры с точностью до сотых миллиметра, в том числе для выездной работы.",
   },
   {
-    name: "SolidWorks, Fusion 360, ZBrush",
+    name: "КОМПАС-3D, SolidWorks, Fusion 360, ZBrush",
     category: "software",
     description:
-      "CAD и digital sculpting — под любую задачу: от параметрической детали до органической формы.",
+      "Отечественный КОМПАС-3D и мировые CAD-системы — моделирование под любую задачу: от конструкторской документации до органических форм.",
   },
 ];

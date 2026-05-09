@@ -23,6 +23,16 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
     );
   }
 
+  if (service.slug === "reverse-engineering") {
+    return (
+      <>
+        <ServiceHero service={service} />
+        <ReverseEngineeringUseCases />
+        <ServiceCta />
+      </>
+    );
+  }
+
   const relatedProjects = portfolioProjects
     .filter((project) => project.category === service.slug)
     .slice(0, 3);
@@ -210,6 +220,55 @@ function ServiceRelatedProjects({
   );
 }
 
+
+const REVERSE_USE_CASES = [
+  {
+    label: "Деталь снята с производства",
+    body: "Восстанавливаем по образцу — даже если документации не сохранилось. Достаточно принести изношенную или сломанную деталь.",
+  },
+  {
+    label: "Готовим к серийному выпуску",
+    body: "Строим параметрическую модель и чертежи по ГОСТ для передачи на завод или в мелкосерийное производство.",
+  },
+  {
+    label: "Адаптируем под свои требования",
+    body: "Модифицируем геометрию, добавляем крепёж, меняем размеры под новую задачу — на основе уже существующего изделия.",
+  },
+  {
+    label: "Документируем без чертежей",
+    body: "Создаём техническую документацию на существующее изделие: для сертификации, патентования или внутреннего архива.",
+  },
+];
+
+function ReverseEngineeringUseCases() {
+  return (
+    <section className="py-20 sm:py-24">
+      <SiteContainer>
+        <SectionHeading
+          eyebrow="Применение"
+          title={
+            <>
+              Для кого это <span className="text-brand">подходит</span>
+            </>
+          }
+        />
+        <div className="mt-12 grid gap-5 sm:grid-cols-2">
+          {REVERSE_USE_CASES.map((item) => (
+            <div
+              key={item.label}
+              className="flex flex-col gap-3 rounded-2xl border border-border bg-surface-raised/40 p-6"
+            >
+              <span className="text-base font-semibold text-foreground">
+                {item.label}
+              </span>
+              <p className="text-sm leading-relaxed text-muted">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </SiteContainer>
+    </section>
+  );
+}
 
 const PLASTICS = [
   { name: "PLA", use: "Прототипы, макеты, декор. Лёгок в печати, хорошая детализация, не требует нагревательной камеры." },
