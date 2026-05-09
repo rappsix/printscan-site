@@ -30,9 +30,9 @@ export const printerGallery: PrinterPhoto[] = [
   },
   {
     id: "scanner-1",
-    name: "3D-сканер",
-    description: "Ручной сканер для выездной работы, точность до сотых мм",
-    imagePath: "/equipment/scanner-1.jpg",
+    name: "Creality CR-Scan Otter Lite",
+    description: "Ручной 3D-сканер с точностью до 0,05 мм. Стереозрение на 4 линзах, Wi-Fi 6, сканирование чёрных и металлических поверхностей.",
+    imagePath: "/equipment/scanner-1.png",
     tag: "Сканер",
   },
 ];
