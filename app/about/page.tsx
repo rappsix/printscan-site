@@ -194,7 +194,7 @@ function AboutPrinterGallery() {
                   src={printer.imagePath}
                   alt={printer.name}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
                 {printer.tag && (

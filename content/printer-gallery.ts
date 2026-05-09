@@ -11,7 +11,7 @@ export const printerGallery: PrinterPhoto[] = [
     id: "elegoo-neptune-4-max",
     name: "Elegoo Neptune 4 Max",
     description: "Крупноформатный FDM-принтер: рабочее поле 430×430×480 мм. Печатаем большие детали, корпуса, архитектурные макеты и серии целиком.",
-    imagePath: "/equipment/elegoo-neptune-4-max.jpg",
+    imagePath: "/equipment/elegoo-neptune-4-max.png",
     tag: "FDM · Large",
   },
   {
