@@ -23,6 +23,16 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
     );
   }
 
+  if (service.slug === "3d-scan") {
+    return (
+      <>
+        <ServiceHero service={service} />
+        <ScannerDescription />
+        <ServiceCta />
+      </>
+    );
+  }
+
   if (service.slug === "reverse-engineering") {
     return (
       <>
@@ -221,6 +231,90 @@ function ServiceRelatedProjects({
 }
 
 
+const SCANNER_HOW_IT_WORKS = [
+  {
+    label: "Структурированный свет",
+    body: "Сканер проецирует на объект паттерн полос и фиксирует его деформацию камерами. Алгоритм восстанавливает трёхмерную форму поверхности без контакта с изделием.",
+  },
+  {
+    label: "Точность до сотых долей мм",
+    body: "Профессиональные сканеры обеспечивают точность 0,02–0,05 мм. Это позволяет контролировать посадки, проверять геометрию деталей и работать с требовательной документацией.",
+  },
+  {
+    label: "Объекты любого размера",
+    body: "Сканируем от миниатюрных деталей размером 5 мм до крупногабаритных конструкций в несколько метров. При необходимости — выезд с оборудованием на объект.",
+  },
+  {
+    label: "Полная геометрия за один проход",
+    body: "Ручной сканер обходит объект со всех сторон, накапливая облако точек в реальном времени. Программа автоматически сшивает сканы и строит замкнутую полигональную сетку.",
+  },
+];
+
+const SCANNER_USE_CASES = [
+  { label: "Реверс-инжиниринг", body: "Оцифровка деталей для восстановления чертежей и производства аналогов." },
+  { label: "Контроль геометрии", body: "Сравнение отсканированной детали с эталонной CAD-моделью." },
+  { label: "Подготовка к 3D-печати", body: "Конвертация физического объекта в STL-файл для репликации или доработки." },
+  { label: "Скульптура и декор", body: "Оцифровка авторских изделий, статуэток, барельефов для тиражирования." },
+  { label: "Медицина и протезирование", body: "Снятие формы конечности или анатомического объекта для изготовления ортеза." },
+  { label: "Промышленное оборудование", body: "Сканирование труднодоступных узлов без разборки агрегата." },
+];
+
+function ScannerDescription() {
+  return (
+    <>
+      <section className="py-20 sm:py-24">
+        <SiteContainer>
+          <SectionHeading
+            eyebrow="Как это работает"
+            title={
+              <>
+                Принцип работы <span className="text-brand">сканера</span>
+              </>
+            }
+            description="Профессиональный ручной 3D-сканер — это оптический прибор, который превращает реальный объект в точную цифровую модель без прикосновений и шаблонов."
+          />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+            {SCANNER_HOW_IT_WORKS.map((item) => (
+              <div
+                key={item.label}
+                className="flex flex-col gap-3 rounded-2xl border border-border bg-surface-raised/40 p-6"
+              >
+                <span className="text-base font-semibold text-foreground">
+                  {item.label}
+                </span>
+                <p className="text-sm leading-relaxed text-muted">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </SiteContainer>
+      </section>
+      <section className="border-t border-border/60 bg-surface/40 py-20 sm:py-24">
+        <SiteContainer>
+          <SectionHeading
+            eyebrow="Применение"
+            title={
+              <>
+                Для каких задач <span className="text-brand">подходит</span>
+              </>
+            }
+          />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {SCANNER_USE_CASES.map((item) => (
+              <div
+                key={item.label}
+                className="flex flex-col gap-2 rounded-2xl border border-border bg-surface-raised/40 p-5"
+              >
+                <span className="text-base font-semibold text-brand">{item.label}</span>
+                <p className="text-sm leading-relaxed text-muted">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </SiteContainer>
+      </section>
+    </>
+  );
+}
+
 const REVERSE_USE_CASES = [
   {
     label: "Деталь снята с производства",
@@ -233,10 +327,6 @@ const REVERSE_USE_CASES = [
   {
     label: "Адаптируем под свои требования",
     body: "Модифицируем геометрию, добавляем крепёж, меняем размеры под новую задачу — на основе уже существующего изделия.",
-  },
-  {
-    label: "Документируем без чертежей",
-    body: "Создаём техническую документацию на существующее изделие: для сертификации, патентования или внутреннего архива.",
   },
 ];
 
