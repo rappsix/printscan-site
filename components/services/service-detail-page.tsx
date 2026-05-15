@@ -53,7 +53,7 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       <ServiceHero service={service} />
       <ServiceBullets service={service} />
       {service.materials ? <ServiceMaterials service={service} /> : null}
-      {relatedProjects.length > 0 ? (
+      {relatedProjects.length > 0 && !service.hideRelatedProjects ? (
         <ServiceRelatedProjects projects={relatedProjects} />
       ) : null}
       <ServiceCta />
@@ -66,17 +66,27 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
   const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
   const next = () => setIndex((i) => (i + 1) % images.length);
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border">
+    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-surface">
+      {/* blurred backdrop */}
+      <Image
+        key={"bg-" + images[index]}
+        src={images[index]}
+        alt=""
+        fill
+        sizes="(min-width: 1024px) 40vw, 100vw"
+        className="object-cover scale-110 blur-xl opacity-40"
+        aria-hidden
+      />
+      {/* sharp main image */}
       <Image
         key={images[index]}
         src={images[index]}
         alt={alt}
         fill
         sizes="(min-width: 1024px) 40vw, 100vw"
-        className="object-cover transition-opacity duration-300"
+        className="object-contain transition-opacity duration-300"
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-surface/60 via-transparent to-transparent" />
       {images.length > 1 && (
         <>
           <button
