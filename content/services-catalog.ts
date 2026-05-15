@@ -20,6 +20,7 @@ export interface ServiceEntry {
   icon: "printer" | "scan" | "wrench" | "cube" | "home" | "sparkles";
   image?: string;
   images?: string[];
+  hideRelatedProjects?: boolean;
 }
 
 export const servicesCatalog: ServiceEntry[] = [
@@ -104,6 +105,7 @@ export const servicesCatalog: ServiceEntry[] = [
     deliveryHint: "от 2 дней",
     priceHint: "уточните по запросу",
     icon: "cube",
+    hideRelatedProjects: true,
     image: "/services/3d-modeling.jpg",
     images: [
       "/services/3d-modeling.jpg",
@@ -136,6 +138,7 @@ export const servicesCatalog: ServiceEntry[] = [
     priceHint: "уточните по запросу",
     icon: "home",
     image: "/services/mockups.jpg",
+    hideRelatedProjects: true,
   },
   {
     slug: "post-processing",
@@ -154,6 +157,7 @@ export const servicesCatalog: ServiceEntry[] = [
     priceHint: "уточните по запросу",
     icon: "sparkles",
     image: "/services/post-processing.jpg",
+    hideRelatedProjects: true,
   },
 ];
 
