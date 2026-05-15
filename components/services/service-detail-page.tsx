@@ -1,6 +1,8 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import { ServiceIcon } from "@/components/icons/service-icon";
 import { OpenModalButton } from "@/components/lead-capture/open-modal-button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -59,7 +61,56 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
   );
 }
 
+function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
+  const [index, setIndex] = useState(0);
+  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
+  const next = () => setIndex((i) => (i + 1) % images.length);
+  return (
+    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border">
+      <Image
+        key={images[index]}
+        src={images[index]}
+        alt={alt}
+        fill
+        sizes="(min-width: 1024px) 40vw, 100vw"
+        className="object-cover transition-opacity duration-300"
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-surface/60 via-transparent to-transparent" />
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prev}
+            aria-label="Предыдущее фото"
+            className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-border bg-surface/80 p-1.5 text-foreground backdrop-blur-sm transition hover:bg-surface"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            onClick={next}
+            aria-label="Следующее фото"
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-border bg-surface/80 p-1.5 text-foreground backdrop-blur-sm transition hover:bg-surface"
+          >
+            <ChevronRight size={18} />
+          </button>
+          <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                aria-label={`Фото ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all ${i === index ? "w-4 bg-brand" : "w-1.5 bg-white/60"}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function ServiceHero({ service }: { service: ServiceEntry }) {
+  const carouselImages = service.images ?? (service.image ? [service.image] : []);
   return (
     <section className="relative overflow-hidden border-b border-border/60 bg-surface/40 py-20 sm:py-24">
       <div className="absolute inset-0 grid-bg opacity-40" />
@@ -89,19 +140,9 @@ function ServiceHero({ service }: { service: ServiceEntry }) {
             </div>
           </div>
           <div className="flex flex-col gap-5">
-            {service.image ? (
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface/60 via-transparent to-transparent" />
-              </div>
-            ) : null}
+            {carouselImages.length > 0 && (
+              <ImageCarousel images={carouselImages} alt={service.title} />
+            )}
             <ServiceMetaCard service={service} />
           </div>
         </div>

@@ -19,6 +19,7 @@ export interface ServiceEntry {
   priceHint: string;
   icon: "printer" | "scan" | "wrench" | "cube" | "home" | "sparkles";
   image?: string;
+  images?: string[];
 }
 
 export const servicesCatalog: ServiceEntry[] = [
@@ -104,6 +105,19 @@ export const servicesCatalog: ServiceEntry[] = [
     priceHint: "уточните по запросу",
     icon: "cube",
     image: "/services/3d-modeling.jpg",
+    images: [
+      "/services/3d-modeling.jpg",
+      "/services/3d-modeling-2.jpg",
+      "/services/3d-modeling-3.jpg",
+      "/services/3d-modeling-4.jpg",
+      "/services/3d-modeling-5.jpg",
+      "/services/3d-modeling-6.jpg",
+      "/services/3d-modeling-7.jpg",
+      "/services/3d-modeling-8.jpg",
+      "/services/3d-modeling-9.jpg",
+      "/services/3d-modeling-10.jpg",
+      "/services/3d-modeling-11.jpg",
+    ],
   },
   {
     slug: "mockups",
