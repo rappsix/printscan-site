@@ -56,6 +56,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    yandex: "b4964934ffaf60dd",
+  },
 };
 
 export const viewport: Viewport = {
