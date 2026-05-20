@@ -9,6 +9,10 @@ import {
   blogEntries,
   findBlogEntryBySlug,
 } from "@/content/blog-entries";
+import { ArticleSchema } from "@/components/seo/article-schema";
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
+
+const SITE_URL = "https://scanandprint.ru";
 
 interface BlogPageParams {
   params: Promise<{ slug: string }>;
@@ -33,6 +37,15 @@ export async function generateMetadata({
   return {
     title: entry.title,
     description: entry.excerpt,
+    alternates: {
+      canonical: `${SITE_URL}/blog/${slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: entry.title,
+      description: entry.excerpt,
+      publishedTime: entry.publishedAt,
+    },
   };
 }
 
@@ -47,6 +60,18 @@ export default async function BlogEntryPage({ params }: BlogPageParams) {
 
   return (
     <>
+      <ArticleSchema
+        title={entry.title}
+        description={entry.excerpt}
+        publishedAt={entry.publishedAt}
+        path={`/blog/${entry.slug}`}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Блог", path: "/blog" },
+          { name: entry.title, path: `/blog/${entry.slug}` },
+        ]}
+      />
       <article className="relative border-b border-border/60 bg-surface/40 py-20 sm:py-24">
         <div className="absolute inset-0 grid-bg opacity-40" />
         <SiteContainer className="relative max-w-3xl">

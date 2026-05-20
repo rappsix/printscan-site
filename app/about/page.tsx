@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { ArrowRight, Cpu, Printer, ScanLine } from "lucide-react";
 import { BrandButton } from "@/components/ui/brand-button";
 import { OpenModalButton } from "@/components/lead-capture/open-modal-button";
@@ -18,11 +19,15 @@ export const metadata: Metadata = {
   title: "О компании",
   description:
     "Scan & Print работает с 2018 года в Пензе: 3D-печать, промышленное сканирование, реверс-инжиниринг и моделирование.",
+  alternates: {
+    canonical: "https://scanandprint.ru/about",
+  },
 };
 
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "О компании", path: "/about" }]} />
       <AboutHero />
       <AboutStats />
       <AboutPrinciples />

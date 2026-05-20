@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Блог",
   description:
     "Статьи и кейсы по 3D-печати, сканированию и реверс-инжинирингу от мастерской Scan & Print.",
+  alternates: {
+    canonical: "https://scanandprint.ru/blog",
+  },
 };
 
 const russianDateFormatter = new Intl.DateTimeFormat("ru-RU", {

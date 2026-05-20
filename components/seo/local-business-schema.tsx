@@ -5,22 +5,34 @@ const SITE_URL = "https://scanandprint.ru";
 export function LocalBusinessSchema() {
   const data = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "ProfessionalService"],
     name: companyInfo.name,
     description: companyInfo.description,
     url: SITE_URL,
     telephone: companyInfo.phoneClean,
     email: companyInfo.email,
+    image: `${SITE_URL}/logo.png`,
+    priceRange: "₽₽",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "ул. Нагорный проезд, д. Аа, к. А",
+      streetAddress: "ул. Нагорный проезд, д. 2а, к. А",
       addressLocality: companyInfo.city,
       addressRegion: companyInfo.region,
       addressCountry: "RU",
     },
-    areaServed: companyInfo.region,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 53.1959,
+      longitude: 45.0183,
+    },
+    areaServed: [
+      { "@type": "City", name: companyInfo.city },
+      { "@type": "AdministrativeArea", name: companyInfo.region },
+    ],
     openingHours: "Mo-Fr 09:00-19:00",
     foundingDate: String(companyInfo.founded),
+    paymentAccepted: "Cash, CreditCard, Invoice",
+    currenciesAccepted: "RUB",
     sameAs: [
       `https://t.me/${companyInfo.telegram}`,
       `https://vk.com/${companyInfo.vk}`,

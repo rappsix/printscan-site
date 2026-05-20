@@ -8,6 +8,7 @@ import {
   Send,
   Users,
 } from "lucide-react";
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SiteContainer } from "@/components/ui/site-container";
 import { companyInfo } from "@/content/company-info";
@@ -16,11 +17,15 @@ export const metadata: Metadata = {
   title: "Контакты",
   description:
     "Телефон, email, Telegram, WhatsApp и VK мастерской Scan & Print в Пензе. Режим работы.",
+  alternates: {
+    canonical: "https://scanandprint.ru/contacts",
+  },
 };
 
 export default function ContactsPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Контакты", path: "/contacts" }]} />
       <section className="relative border-b border-border/60 bg-surface/40 py-20 sm:py-24">
         <div className="absolute inset-0 grid-bg opacity-40" />
         <SiteContainer className="relative max-w-3xl">

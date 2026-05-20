@@ -11,6 +11,9 @@ import {
   portfolioProjects,
   type PortfolioProject,
 } from "@/content/portfolio-projects";
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
+
+const SITE_URL = "https://scanandprint.ru";
 
 interface ProjectPageParams {
   params: Promise<{ slug: string }>;
@@ -29,6 +32,9 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.summary,
+    alternates: {
+      canonical: `${SITE_URL}/portfolio/${slug}`,
+    },
   };
 }
 
@@ -43,6 +49,12 @@ export default async function ProjectPage({ params }: ProjectPageParams) {
 
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Портфолио", path: "/portfolio" },
+          { name: project.title, path: `/portfolio/${project.slug}` },
+        ]}
+      />
       <section className="relative border-b border-border/60 bg-surface/40 py-20 sm:py-24">
         <div className="absolute inset-0 grid-bg opacity-40" />
         <SiteContainer className="relative">
