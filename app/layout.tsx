@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://scanandprint.ru"),
+  metadataBase: new URL("https://scanprint58.ru"),
   title: {
     default: `${companyInfo.name} — ${companyInfo.tagline}`,
     template: `%s — ${companyInfo.name}`,
