@@ -7,6 +7,7 @@ import { CheckCircle, Loader2, MessageCircle, Phone, Send, X } from "lucide-reac
 import { contactLeadSchema, type ContactLead } from "@/lib/lead-capture/schema";
 import { cn } from "@/lib/class-merger";
 import { companyInfo } from "@/content/company-info";
+import { trackGoal } from "@/lib/analytics";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -68,6 +69,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error();
+      trackGoal("form_submit");
       setStatus("success");
     } catch {
       setStatus("error");
@@ -197,6 +199,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <div className="flex gap-2">
               <a
                 href={`tel:${companyInfo.phoneClean}`}
+                onClick={() => trackGoal("click_phone")}
                 className="flex flex-1 items-center gap-2 rounded-xl border border-border bg-surface-raised/60 px-4 py-2.5 text-sm transition-colors hover:border-brand/50 hover:bg-surface-raised"
               >
                 <Phone size={15} className="shrink-0 text-brand" />
@@ -204,6 +207,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </a>
               <a
                 href={`tel:${companyInfo.phone2Clean}`}
+                onClick={() => trackGoal("click_phone")}
                 className="flex flex-1 items-center gap-2 rounded-xl border border-border bg-surface-raised/60 px-4 py-2.5 text-sm transition-colors hover:border-brand/50 hover:bg-surface-raised"
               >
                 <Phone size={15} className="shrink-0 text-brand" />
@@ -215,6 +219,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(companyInfo.whatsappGreeting)}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackGoal("click_whatsapp")}
                 className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-surface-raised/60 px-4 py-2.5 text-sm transition-colors hover:border-brand/50 hover:bg-surface-raised"
               >
                 <MessageCircle size={15} className="shrink-0 text-brand" />
@@ -224,6 +229,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 href={`https://t.me/${companyInfo.telegram}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackGoal("click_telegram")}
                 className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-surface-raised/60 px-4 py-2.5 text-sm transition-colors hover:border-brand/50 hover:bg-surface-raised"
               >
                 <Send size={15} className="shrink-0 text-brand" />

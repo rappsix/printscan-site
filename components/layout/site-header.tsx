@@ -9,6 +9,7 @@ import { cn } from "@/lib/class-merger";
 import { BrandButton } from "@/components/ui/brand-button";
 import { useContactModal } from "@/components/lead-capture/modal-provider";
 import { primaryNavLinks } from "./main-navigation";
+import { trackGoal } from "@/lib/analytics";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -47,6 +48,7 @@ export function SiteHeader() {
           <div className="flex flex-col items-end gap-0.5">
             <a
               href={`tel:${companyInfo.phoneClean}`}
+              onClick={() => trackGoal("click_phone")}
               className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
             >
               <Phone size={16} />
@@ -54,6 +56,7 @@ export function SiteHeader() {
             </a>
             <a
               href={`tel:${companyInfo.phone2Clean}`}
+              onClick={() => trackGoal("click_phone")}
               className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
             >
               <Phone size={16} />

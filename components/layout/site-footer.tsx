@@ -4,6 +4,7 @@ import { Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 import { companyInfo } from "@/content/company-info";
 import { servicesCatalog } from "@/content/services-catalog";
 import { SiteContainer } from "@/components/ui/site-container";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 
 export function SiteFooter() {
   return (
@@ -54,59 +55,65 @@ export function SiteFooter() {
             <h3 className="mb-3 text-sm font-semibold text-foreground">Связь</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <a
+                <TrackedLink
                   href={`tel:${companyInfo.phoneClean}`}
+                  goal="click_phone"
                   className="inline-flex items-center gap-2 hover:text-foreground"
                 >
                   <Phone size={15} />
                   {companyInfo.phone}
-                </a>
+                </TrackedLink>
               </li>
               <li>
-                <a
+                <TrackedLink
                   href={`tel:${companyInfo.phone2Clean}`}
+                  goal="click_phone"
                   className="inline-flex items-center gap-2 hover:text-foreground"
                 >
                   <Phone size={15} />
                   {companyInfo.phone2}
-                </a>
+                </TrackedLink>
               </li>
               <li>
-                <a
+                <TrackedLink
                   href={`mailto:${companyInfo.email}`}
+                  goal="click_email"
                   className="inline-flex items-center gap-2 hover:text-foreground"
                 >
                   <Mail size={15} />
                   {companyInfo.email}
-                </a>
+                </TrackedLink>
               </li>
               <li>
-                <a
+                <TrackedLink
                   href={`https://wa.me/${companyInfo.whatsapp}?text=${encodeURIComponent(companyInfo.whatsappGreeting)}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  goal="click_whatsapp"
                   className="inline-flex items-center gap-2 hover:text-foreground"
                 >
                   <MessageCircle size={15} />
                   WhatsApp
-                </a>
+                </TrackedLink>
               </li>
               <li>
-                <a
+                <TrackedLink
                   href={`https://t.me/${companyInfo.telegram}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  goal="click_telegram"
                   className="inline-flex items-center gap-2 hover:text-foreground"
                 >
                   <Send size={15} />
                   Telegram
-                </a>
+                </TrackedLink>
               </li>
               <li>
-                <a
+                <TrackedLink
                   href={`https://vk.com/${companyInfo.vk}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  goal="click_vk"
                   className="inline-flex items-center gap-2 hover:text-foreground"
                 >
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
