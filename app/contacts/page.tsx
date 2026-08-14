@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Телефон, email, Telegram, WhatsApp и VK мастерской Scan & Print в Пензе. Режим работы.",
   alternates: {
-    canonical: "https://scanandprint.ru/contacts",
+    canonical: "https://scanprint58.ru/contacts",
   },
 };
 
