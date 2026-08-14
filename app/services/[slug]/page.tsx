@@ -4,7 +4,7 @@ import { ServiceDetailPage } from "@/components/services/service-detail-page";
 import { findServiceBySlug, servicesCatalog } from "@/content/services-catalog";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 
-const SITE_URL = "https://scanandprint.ru";
+const SITE_URL = "https://scanprint58.ru";
 
 interface ServicePageParams {
   params: Promise<{ slug: string }>;
