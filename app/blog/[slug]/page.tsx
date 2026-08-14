@@ -12,7 +12,7 @@ import {
 import { ArticleSchema } from "@/components/seo/article-schema";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 
-const SITE_URL = "https://scanandprint.ru";
+const SITE_URL = "https://scanprint58.ru";
 
 interface BlogPageParams {
   params: Promise<{ slug: string }>;
