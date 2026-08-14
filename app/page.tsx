@@ -10,7 +10,7 @@ import { FaqSchema } from "@/components/seo/faq-schema";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://scanandprint.ru",
+    canonical: "https://scanprint58.ru",
   },
 };
 
