@@ -3,7 +3,7 @@ import { blogEntries } from "@/content/blog-entries";
 import { portfolioProjects } from "@/content/portfolio-projects";
 import { servicesCatalog } from "@/content/services-catalog";
 
-const SITE_URL = "https://scanandprint.ru";
+const SITE_URL = "https://scanprint58.ru";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
