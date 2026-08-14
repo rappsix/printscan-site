@@ -1,4 +1,4 @@
-const SITE_URL = "https://scanandprint.ru";
+const SITE_URL = "https://scanprint58.ru";
 
 interface ArticleSchemaProps {
   title: string;
