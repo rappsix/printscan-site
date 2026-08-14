@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Статьи и кейсы по 3D-печати, сканированию и реверс-инжинирингу от мастерской Scan & Print.",
   alternates: {
-    canonical: "https://scanandprint.ru/blog",
+    canonical: "https://scanprint58.ru/blog",
   },
 };
 
