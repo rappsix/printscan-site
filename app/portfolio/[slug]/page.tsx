@@ -13,7 +13,7 @@ import {
 } from "@/content/portfolio-projects";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 
-const SITE_URL = "https://scanandprint.ru";
+const SITE_URL = "https://scanprint58.ru";
 
 interface ProjectPageParams {
   params: Promise<{ slug: string }>;
