@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Примеры работ мастерской Scan & Print: 3D-печать деталей, промышленное сканирование, реверс-инжиниринг, архитектурные макеты.",
   alternates: {
-    canonical: "https://scanandprint.ru/portfolio",
+    canonical: "https://scanprint58.ru/portfolio",
   },
 };
 
