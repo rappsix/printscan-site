@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description:
     "Scan & Print работает с 2018 года в Пензе: 3D-печать, промышленное сканирование, реверс-инжиниринг и моделирование.",
   alternates: {
-    canonical: "https://scanandprint.ru/about",
+    canonical: "https://scanprint58.ru/about",
   },
 };
 
