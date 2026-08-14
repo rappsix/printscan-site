@@ -1,6 +1,6 @@
 import { companyInfo } from "@/content/company-info";
 
-const SITE_URL = "https://scanandprint.ru";
+const SITE_URL = "https://scanprint58.ru";
 
 export function LocalBusinessSchema() {
   const data = {
